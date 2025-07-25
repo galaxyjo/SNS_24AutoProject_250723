@@ -1,0 +1,3 @@
+TASK_STATUS_DONE = "done"
+TASK_STATUS_IGNORED = "ignored"
+TASK_STATUS_PENDING = "pending"
