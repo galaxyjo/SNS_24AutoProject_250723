@@ -1,51 +1,53 @@
-import asyncio
-import os
-import sys
-import sqlite3
+# tests/test_account_runner.py
+
 import pytest
+from unittest.mock import patch, AsyncMock
+from modules.account_runner import run_account, run_all_accounts
 
-# ✅ modules 폴더를 import 경로에 추가
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from modules.account_runner import log_account_run, run_all_accounts
-
-# ────────────────────────── 공통 FIXTURE: DB를 메모리로 ──────────────────────────
-@pytest.fixture(autouse=True)
-def _in_memory_db(monkeypatch):
-    monkeypatch.setattr("modules.account_runner.DB_PATH", ":memory:")
-    conn = sqlite3.connect(":memory:")
-    conn.execute("""
-    CREATE TABLE IF NOT EXISTS account_run_log (
-        session_id TEXT,
-        account    TEXT,
-        status     TEXT,
-        message    TEXT
-    )
-    """)
-    conn.commit()
-    conn.close()
-    yield
-
-# ────────────────────────────── log_account_run 테스트 ─────────────────────────────
+@patch("modules.core.main_features.execute_account", new_callable=AsyncMock)
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
-    "sid, acc, stat, msg",
+    "sid, acc_id, expected_status",
     [
-        ("SID1", "acc1", "success", "ok"),
-        ("SID2", "acc2", "fail", "err"),
-    ]
+        ("TESTSID1", "account_01", "success"),
+        ("TESTSID2", "account_02", "fail"),
+    ],
 )
-def test_log_account_run(sid, acc, stat, msg):
-    result = log_account_run(sid, acc, stat, msg)
-    assert result is None
+async def test_run_account(mock_execute_account, sid, acc_id, expected_status):
+    if expected_status == "success":
+        mock_execute_account.return_value = "ok"
+    else:
+        async def raise_exception(*args, **kwargs):
+            raise Exception("fail")
+        mock_execute_account.side_effect = raise_exception
 
-# ────────────────────────────── run_all_accounts 테스트 ─────────────────────────────
-def test_run_all_accounts(monkeypatch):
-    # ✅ run_account 함수를 더미 함수로 교체해 테스트 가능하게 만듦
-    async def dummy_run_account(account, session_id):
-        return f"TEST-{account}"
+    result = await run_account(sid, acc_id)
 
-    monkeypatch.setattr("modules.account_runner.run_account", dummy_run_account)
+    assert isinstance(result, dict)
+    assert result["session_id"] == sid
+    assert result["account"] == acc_id
+    assert result["status"] == expected_status
+    assert "message" in result
 
-    # ✅ run_all_accounts를 직접 실행
-    result = asyncio.run(run_all_accounts("SID_TEST"))
-    assert result is None
+
+@patch("modules.account_runner.run_account", new_callable=AsyncMock)
+@pytest.mark.asyncio
+async def test_run_all_accounts(mock_run_account):
+    async def fake_run_account(session_id, acc_id):
+        return {
+            "session_id": session_id,
+            "account": acc_id,
+            "status": "success",
+            "message": "ok"
+        }
+
+    mock_run_account.side_effect = fake_run_account
+
+    result = await run_all_accounts("TEST_SESSION")
+
+    assert result is not None
+    assert isinstance(result, dict)
+    assert "account_01" in result
+    assert result["account_01"]["status"] == "success"
+    assert result["account_01"]["message"] == "ok"
