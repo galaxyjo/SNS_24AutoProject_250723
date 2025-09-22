@@ -1,0 +1,62 @@
+[
+  {
+    "source": "<MAY_BACKUP_ROOT>/db/trace_log.db",
+    "target": "db/trace_log.db",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/decorators/log_trace.py",
+    "target": "decorators/log_trace.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/api.py",
+    "target": "modules/api.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/cfg_loader.py",
+    "target": "modules/cfg_loader.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/cfg_local.py",
+    "target": "modules/cfg_local.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/pickle_serializer.py",
+    "target": "modules/pickle_serializer.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/pprint_util_custom.py",
+    "target": "modules/pprint_util_custom.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/six_util_custom.py",
+    "target": "modules/six_util_custom.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/ssl_handler.py",
+    "target": "modules/ssl_handler.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  },
+  {
+    "source": "<MAY_BACKUP_ROOT>/modules/task_queue_mgr.py",
+    "target": "modules/task_queue_mgr.py",
+    "mode": "copy",
+    "note": "auto-suggest"
+  }
+]

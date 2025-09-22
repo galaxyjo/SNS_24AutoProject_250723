@@ -1,0 +1,5 @@
+[
+  "test_account_runner.py::test_log_account_run[SID1-acc1-success-ok]",
+  "test_account_runner.py::test_log_account_run[SID2-acc2-fail-err]",
+  "test_account_runner.py::test_run_all_accounts"
+]

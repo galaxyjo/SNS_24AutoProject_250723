@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-import os, sys
+import getpass
+import os
+import platform
+import socket
+import sqlite3
+import sys
+from datetime import datetime
+
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
@@ -10,12 +17,6 @@ EXPORT_PATH = os.getenv("EXPORT_PATH")
 MODULE_PATH = os.getenv("MODULE_PATH")
 sys.path.append(MODULE_PATH)
 os.chdir(BASE_PATH)
-import os
-import platform
-import socket
-import getpass
-import sqlite3
-from datetime import datetime
 
 db_path = "db/env_log.db"
 conn = sqlite3.connect(db_path)

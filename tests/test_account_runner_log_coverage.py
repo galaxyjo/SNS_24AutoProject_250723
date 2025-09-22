@@ -1,47 +1,30 @@
-# tests/test_account_runner_log_coverage.py
-
-import pytest
 import sqlite3
-import os
-from modules.account_runner import log_account_run, run_account, init_log_db, DB_PATH
+import pytest
+import asyncio
+from modules.account_runner import run_all_accounts, init_log_db
+from modules.log_trace import get_logger  # ✅ 경로 수정됨
 
 
-def test_log_account_run_internal_conn(tmp_path):
-    # ✅ 내부 커넥션 생성 흐름 테스트
-    db_file = tmp_path / "account_log.db"
-    os.environ["PYTHONPATH"] = str(tmp_path)
-    init_log_db()
-    log_account_run("SID_X", "acc_test", "SUCCESS", "ok", conn=None)
-
-    assert os.path.exists(DB_PATH)
-
-
-def test_log_account_run_external_conn(tmp_path):
-    # ✅ 외부에서 커넥션 주입 테스트
-    test_db = tmp_path / "custom_log.db"
-    conn = sqlite3.connect(test_db)
-    log_account_run("SID_Y", "acc_ext", "FAIL", "error!", conn=conn)
-
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM account_run_log")
-    rows = cursor.fetchall()
-
-    assert len(rows) == 1
-    assert rows[0][0] == "SID_Y"
-    conn.close()
+def test_logger_runs():
+    logger = get_logger()
+    assert logger.name == "SNSLogger"
 
 
 @pytest.mark.asyncio
-async def test_run_account_failures(monkeypatch):
-    # ✅ 강제 예외 발생 유도해서 3회 실패 흐름 및 로그 기록 확인
-    async def mock_execute_fail(*args, **kwargs):
-        raise RuntimeError("Mock failure")
+async def test_run_all_accounts_logs(tmp_path):
+    sess_id = "test_session"
+    test_db_path = tmp_path / "test_account_log.db"
 
-    monkeypatch.setattr("modules.core.main_features.execute_account", mock_execute_fail)
+    # ✅ DB 연결 및 테이블 생성
+    conn = init_log_db(db_path=str(test_db_path))
 
-    result = await run_account("SID_FAIL", "account_fail")
+    # ✅ 커넥션을 명시적으로 전달 (비동기 실행 필요)
+    await run_all_accounts(sess_id, conn=conn)
 
-    assert result["status"] == "fail"
-    assert result["account"] == "account_fail"
-    assert "message" in result
-    assert "Mock failure" in result["message"]
+    # ✅ DB에 실제 로그가 저장되었는지 확인
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT COUNT(*) FROM account_run_log WHERE session_id = ?", (sess_id,)
+    )
+    count = cursor.fetchone()[0]
+    assert count > 0

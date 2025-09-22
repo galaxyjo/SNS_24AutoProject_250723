@@ -1,5 +1,5 @@
 """
-    Instabot Checkpoint methods.
+Instabot Checkpoint methods.
 """
 
 import os
@@ -11,7 +11,11 @@ CHECKPOINT_PATH = current_path + "/config/{fname}.checkpoint"
 
 
 class Checkpoint:
-    def __init__(self, *args, **kwargs): pass
+    """Class `Checkpoint` docstring."""
+
+    def __init__(self, *args, **kwargs):
+        """Function `__init__` docstring."""
+        pass
 
     """
         Checkpoint for instabot.Bot class which can store:
@@ -23,6 +27,7 @@ class Checkpoint:
     """
 
     def __init__(self, bot):
+        """Function `__init__` docstring."""
         self.total = {}
         for k in bot.total:
             self.total[k] = bot.total[k]
@@ -32,19 +37,22 @@ class Checkpoint:
         self.start_time = bot.start_time
         self.date = datetime.now()
         self.total_requests = bot.api.total_requests
-        # self.bot = bot
 
     def fill_following(self, bot):
+        """Function `fill_following` docstring."""
         self._following = [item["pk"] for item in bot.api.get_total_self_followings()]
 
     def fill_followers(self, bot):
+        """Function `fill_followers` docstring."""
         self._followers = [item["pk"] for item in bot.api.get_total_self_followers()]
 
     def dump(self):
+        """Function `dump` docstring."""
         return (self.total, self.blocked_actions, self.total_requests, self.start_time)
 
 
 def save_checkpoint(self):
+    """Function `save_checkpoint` docstring."""
     checkpoint = Checkpoint(self)
     fname = CHECKPOINT_PATH.format(fname=self.api.username)
     fname = os.path.join(self.base_path, fname)
@@ -55,6 +63,7 @@ def save_checkpoint(self):
 
 
 def load_checkpoint(self):
+    """Function `load_checkpoint` docstring."""
     try:
         fname = CHECKPOINT_PATH.format(fname=self.api.username)
         fname = os.path.join(self.base_path, fname)

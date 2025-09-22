@@ -1,6 +1,6 @@
-
 # config/recovery_config.py
 import os
+
 BASE_DIR = r"C:\clean_rebuild"
 EXCLUDE_DIRS = ["__pycache__", "site-packages", "venv"]
 FUNCTIONS_TO_TRACE = ["connect_to_server", "send_data", "receive_data"]

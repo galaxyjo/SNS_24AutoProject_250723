@@ -1,14 +1,21 @@
+"""Module docstring."""
+
 import datetime
 
 from instabot.singleton import Singleton
 
 
 class BotState:
-    def __init__(self, *args, **kwargs): pass
+    """Class `BotState` docstring."""
+
+    def __init__(self, *args, **kwargs):
+        """Function `__init__` docstring."""
+        pass
 
     __metaclass__ = Singleton
 
     def __init__(self):
+        """Function `__init__` docstring."""
         self.start_time = datetime.datetime.now()
         self.total = dict.fromkeys(
             [
@@ -67,4 +74,5 @@ class BotState:
         )
 
     def __repr__(self):
+        """Function `__repr__` docstring."""
         return self.__dict__

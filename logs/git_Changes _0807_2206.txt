@@ -1,0 +1,902 @@
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    backup/SNS_24AutoProject_FINAL_20250516_1002/modules_unused/https_debugger.py
+        deleted:    backup/SNS_24AutoProject_FINAL_20250516_1002/modules_unused/webhook_sender.py
+        modified:   broken_files.txt
+        modified:   check_tables.py
+        modified:   confirmed_compile_failed_250723.txt
+        deleted:    core/__init__.cpython-312.py
+        deleted:    core/_deprecation.cpython-312.py
+        deleted:    core/_html5lib.cpython-312.py
+        deleted:    core/_htmlparser.cpython-312.py
+        deleted:    core/_lxml.cpython-312.py
+        deleted:    core/_typing.cpython-312.py
+        deleted:    core/_warnings.cpython-312.py
+        deleted:    core/big5freq.cpython-312.py
+        deleted:    core/big5prober.cpython-312.py
+        deleted:    core/chardetect.cpython-312.py
+        deleted:    core/chardistribution.cpython-312.py
+        deleted:    core/charsetgroupprober.cpython-312.py
+        deleted:    core/charsetprober.cpython-312.py
+        deleted:    core/codingstatemachine.cpython-312.py
+        deleted:    core/codingstatemachinedict.cpython-312.py
+        deleted:    core/cp949prober.cpython-312.py
+        deleted:    core/css.cpython-312.py
+        deleted:    core/dammit.cpython-312.py
+        modified:   core/db.py
+        deleted:    core/diagnose.cpython-312.py
+        deleted:    core/element.cpython-312.py
+        deleted:    core/enums.cpython-312.py
+        deleted:    core/escprober.cpython-312.py
+        deleted:    core/escsm.cpython-312.py
+        deleted:    core/eucjpprober.cpython-312.py
+        deleted:    core/euckrfreq.cpython-312.py
+        deleted:    core/euckrprober.cpython-312.py
+        deleted:    core/euctwfreq.cpython-312.py
+        deleted:    core/euctwprober.cpython-312.py
+        deleted:    core/exceptions.cpython-312.py
+        deleted:    core/filter.cpython-312.py
+        deleted:    core/formatter.cpython-312.py
+        deleted:    core/gb2312freq.cpython-312.py
+        deleted:    core/gb2312prober.cpython-312.py
+        deleted:    core/hebrewprober.cpython-312.py
+        deleted:    core/jisfreq.cpython-312.py
+        deleted:    core/johabfreq.cpython-312.py
+        deleted:    core/johabprober.cpython-312.py
+        deleted:    core/jpcntx.cpython-312.py
+        deleted:    core/langbulgarianmodel.cpython-312.py
+        deleted:    core/langgreekmodel.cpython-312.py
+        deleted:    core/langhebrewmodel.cpython-312.py
+        deleted:    core/langhungarianmodel.cpython-312.py
+        deleted:    core/langrussianmodel.cpython-312.py
+        deleted:    core/langthaimodel.cpython-312.py
+        deleted:    core/langturkishmodel.cpython-312.py
+        deleted:    core/languages.cpython-312.py
+        deleted:    core/latin1prober.cpython-312.py
+        deleted:    core/macromanprober.cpython-312.py
+        deleted:    core/main_features.py
+        deleted:    core/mbcharsetprober.cpython-312.py
+        deleted:    core/mbcsgroupprober.cpython-312.py
+        deleted:    core/mbcssm.cpython-312.py
+        deleted:    core/resultdict.cpython-312.py
+        modified:   core/run_engine.py
+        deleted:    core/sbcharsetprober.cpython-312.py
+        deleted:    core/sbcsgroupprober.cpython-312.py
+        deleted:    core/sjisprober.cpython-312.py
+        deleted:    core/universaldetector.cpython-312.py
+        deleted:    core/utf1632prober.cpython-312.py
+        deleted:    core/utf8prober.cpython-312.py
+        deleted:    core/version.cpython-312.py
+        deleted:    data/exported_data/export_all_logtables.py
+        deleted:    data/exported_data/export_all_logtables_1.py
+        deleted:    data/exported_data/export_all_logtables_to_excel_6.py
+        modified:   data/exported_data/export_all_table_row_counts.py
+        deleted:    data/exported_data/export_all_table_row_counts_6.py
+        modified:   data/exported_data/export_all_tables_with_datetime.py
+        deleted:    data/exported_data/export_all_tables_with_datetime_6.py
+        deleted:    data/exported_data/export_command_log.py
+        deleted:    data/exported_data/export_command_log_6.py
+        deleted:    data/exported_data/export_db_schema_to_csv.py
+        deleted:    data/exported_data/export_db_snapshot_excel.py
+        deleted:    data/exported_data/export_disk_log.py
+        deleted:    data/exported_data/export_disk_log_6.py
+        deleted:    data/exported_data/export_env_log.py
+        deleted:    data/exported_data/export_env_log_6.py
+        deleted:    data/exported_data/export_feedback_log.py
+        deleted:    data/exported_data/export_feedback_log_1.py
+        deleted:    data/exported_data/export_git_commits_to_csv.py
+        deleted:    data/exported_data/export_hook_logs_to_csv.py
+        deleted:    data/exported_data/export_hook_logs_to_csv_6.py
+        modified:   data/exported_data/export_log_summary.py
+        deleted:    data/exported_data/export_log_summary_2.py
+        modified:   data/exported_data/export_log_summary_csv_with_datetime.py
+        deleted:    data/exported_data/export_log_summary_csv_with_datetime_6.py
+        deleted:    data/exported_data/export_logtrace.py
+        deleted:    data/exported_data/export_logtrace_5.py
+        deleted:    data/exported_data/export_logtrace_6.py
+        deleted:    data/exported_data/export_logtrace_table.py
+        deleted:    data/exported_data/export_logtrace_table_1.py
+        modified:   data/exported_data/export_logtrace_to_csv.py
+        deleted:    data/exported_data/export_logtrace_to_csv_6.py
+        deleted:    data/exported_data/export_logtrace_to_excel.py
+        deleted:    data/exported_data/export_logtrace_to_excel_6.py
+        deleted:    data/exported_data/export_logtrace_to_excel_with_datetime.py
+        deleted:    data/exported_data/export_logtrace_to_excel_with_datetime_6.py
+        deleted:    data/exported_data/export_logtrace_with_datetime.py
+        deleted:    data/exported_data/export_logtrace_with_datetime_6.py
+        deleted:    data/exported_data/export_logtrace_with_os_path.py
+        deleted:    data/exported_data/export_logtrace_with_os_path_6.py
+        deleted:    data/exported_data/export_network_log.py
+        deleted:    data/exported_data/export_network_log_6.py
+        deleted:    data/exported_data/export_session_log.py
+        deleted:    data/exported_data/export_session_log_6.py
+        deleted:    data/exported_data/export_session_qasummary.py
+        deleted:    data/exported_data/export_session_results_to_csv.py
+        deleted:    data/exported_data/export_session_results_to_csv_6.py
+        deleted:    data/exported_data/export_session_results_to_csv_with_datetime.py
+        deleted:    data/exported_data/export_session_results_to_csv_with_datetime_6.py
+        deleted:    data/exported_data/export_session_results_with_datetime.py
+        deleted:    data/exported_data/export_session_results_with_datetime_6.py
+        deleted:    data/exported_data/export_session_results_with_datetime_excel_6.py
+        deleted:    data/exported_data/export_trace_log_backup.py
+        deleted:    data/exported_data/export_trace_log_backup_6.py
+        modified:   db/account_log.db
+        modified:   db/init_check_create_logtable.py
+        modified:   db/init_user_table.py
+        modified:   db/init_user_table_2.py
+        modified:   db/insert_command_log.py
+        modified:   db/insert_command_log_6.py
+        modified:   db/insert_disk_log.py
+        modified:   db/insert_disk_log_6.py
+        modified:   db/insert_env_log.py
+        modified:   db/insert_env_log_6.py
+        modified:   db/insert_function_log.py
+        modified:   db/insert_git_log.py
+        modified:   db/insert_git_log_to_db.py
+        modified:   db/insert_git_log_to_db_6.py
+        modified:   db/insert_network_log.py
+        modified:   db/insert_network_log_6.py
+        modified:   db/insert_session_result.py
+        modified:   db/insert_session_result_6.py
+        deleted:    db/session_log_utf8.csv
+        modified:   db/trace_log.db
+        modified:   decorators/log_trace.py
+        modified:   import_map.txt
+        modified:   launcher/main.py
+        modified:   locator/hash_file_locator.py
+        modified:   master_hashes.json
+        modified:   mastertree.txt
+        modified:   modules/__pycache__/account_runner.cpython-310.pyc
+        modified:   modules/api.py
+        modified:   modules/ast_graph_builder.py
+        modified:   modules/auto_generate_tests.py
+        modified:   modules/cfg_loader.py
+        modified:   modules/cfg_local.py
+        modified:   modules/common/KMAC128_3dd47cdb.py
+        modified:   modules/common/__init___a3f0ecdb.py
+        modified:   modules/common/__local_datetime.py
+        modified:   modules/common/__pycache__/logger.cpython-310.pyc
+        modified:   modules/common/_core.py
+        modified:   modules/common/_distutils.py
+        modified:   modules/common/_io_common_1.py
+        modified:   modules/common/_mapping_04f7dcdb.py
+        modified:   modules/common/_mode_cfb_61b4dddb.py
+        modified:   modules/common/_monitor.py
+        modified:   modules/common/_shimmed_dist_utils.py
+        modified:   modules/common/_utils.py
+        deleted:    modules/common/array_utils.py
+        modified:   modules/common/asyncio_custom.py
+        modified:   modules/common/audits_1.py
+        modified:   modules/common/bluetooth_emulation_1.py
+        modified:   modules/common/browser_2.py
+        modified:   modules/common/browser_3.py
+        modified:   modules/common/browsing_context_1.py
+        modified:   modules/common/common_18.py
+        modified:   modules/common/common_19.py
+        modified:   modules/common/common_20.py
+        modified:   modules/common/common_28.py
+        modified:   modules/common/common_29.py
+        modified:   modules/common/common_3.py
+        modified:   modules/common/common_30.py
+        modified:   modules/common/common_31.py
+        modified:   modules/common/common_32.py
+        modified:   modules/common/common_33.py
+        modified:   modules/common/common_34.py
+        modified:   modules/common/common_35.py
+        modified:   modules/common/common_4.py
+        modified:   modules/common/common_5.py
+        modified:   modules/common/common_6.py
+        modified:   modules/common/common_7.py
+        modified:   modules/common/common_8.py
+        modified:   modules/common/common_9.py
+        modified:   modules/common/common_rules_2.py
+        modified:   modules/common/common_rules_3.py
+        modified:   modules/common/commondialog_1.py
+        modified:   modules/common/commontypes_1.py
+        modified:   modules/common/create_trace_db.py
+        modified:   modules/common/css_1.py
+        modified:   modules/common/emulation_1.py
+        modified:   modules/common/export_env_log.py
+        modified:   modules/common/export_env_log_1.py
+        modified:   modules/common/extensions_1.py
+        modified:   modules/common/feature_base.py
+        modified:   modules/common/frame_protocol.py
+        modified:   modules/common/handshake.py
+        modified:   modules/common/hook_status_logger.py
+        modified:   modules/common/import_csv_to_db.py
+        modified:   modules/common/insert_env_log.py
+        modified:   modules/common/insert_env_log_1.py
+        modified:   modules/common/insert_env_log_2.py
+        modified:   modules/common/insert_env_log_3.py
+        modified:   modules/common/insert_env_log_4.py
+        modified:   modules/common/insert_env_log_5.py
+        modified:   modules/common/insert_env_log_6.py
+        modified:   modules/common/log_1.py
+        modified:   modules/common/logger.py
+        modified:   modules/common/my_configparser.py
+        modified:   modules/common/net_socket_engine.py
+        modified:   modules/common/network_2.py
+        modified:   modules/common/network_3.py
+        modified:   modules/common/optimize_trace_log_db.py
+        modified:   modules/common/page_1.py
+        modified:   modules/common/polyutils.py
+        modified:   modules/common/preload_1.py
+        modified:   modules/common/proj_concurrent.py
+        modified:   modules/common/proxy_accf0cdb.py
+        modified:   modules/common/rand_util_core.py
+        modified:   modules/common/random_custom.py
+        modified:   modules/common/safe_ssl.py
+        deleted:    modules/common/sample_test.py
+        modified:   modules/common/script_1.py
+        modified:   modules/common/session_1.py
+        modified:   modules/common/st_common_2.py
+        modified:   modules/common/st_common_3.py
+        modified:   modules/common/std.py
+        modified:   modules/common/storage_1.py
+        modified:   modules/common/tags_344cfcdb.py
+        modified:   modules/common/time_helper.py
+        modified:   modules/common/unicode_utils.py
+        modified:   modules/common/utils.py
+        deleted:    modules/dm/__init__.py
+        modified:   modules/dm/bot.py
+        modified:   modules/dm/bot_archive.py
+        modified:   modules/dm/bot_block.py
+        modified:   modules/dm/bot_cache.py
+        modified:   modules/dm/bot_checkpoint.py
+        modified:   modules/dm/bot_comment.py
+        modified:   modules/dm/bot_delete.py
+        modified:   modules/dm/bot_direct.py
+        modified:   modules/dm/bot_filter.py
+        modified:   modules/dm/bot_follow.py
+        modified:   modules/dm/bot_get.py
+        modified:   modules/dm/bot_like.py
+        modified:   modules/dm/bot_like_6dbb9223.py
+        modified:   modules/dm/bot_photo.py
+        modified:   modules/dm/bot_state.py
+        modified:   modules/dm/bot_stats.py
+        modified:   modules/dm/bot_story.py
+        modified:   modules/dm/bot_support.py
+        modified:   modules/dm/bot_unfollow.py
+        modified:   modules/dm/bot_unlike.py
+        modified:   modules/dm/bot_video.py
+        deleted:    modules/dm/state/__init__.py
+        deleted:    modules/dm/state/bot_cache.py
+        deleted:    modules/dm/state/bot_state.py
+        modified:   modules/log_trace.py
+        modified:   modules/metrics/collector.py
+        modified:   modules/pickle_serializer.py
+        modified:   modules/pprint_util_custom.py
+        modified:   modules/queue/_entry_queue.py
+        modified:   modules/queue/_unbounded_queue.py
+        modified:   modules/reset_db.py
+        modified:   modules/six_util_custom.py
+        modified:   modules/ssl_handler.py
+        modified:   modules/task_queue_mgr.py
+        modified:   recovery/recovery_file_restorer.py
+        modified:   reports/gen_exports.py
+        modified:   reports/gen_exports_1761c9be.py
+        modified:   reports/gen_exports_6.py
+        modified:   reports/summary_report_writer.py
+        modified:   scripts/_export_format_8fa3e61b_6.py
+        modified:   scripts/auto_backup_logtrace_6.py
+        modified:   scripts/auto_send_gitlog_webhook_2.py
+        modified:   scripts/build_scripts.py
+        modified:   scripts/create_release_package_2.py
+        modified:   scripts/enerate_log_statistics_6.py
+        modified:   scripts/generate_log_statistics_6.py
+        modified:   scripts/generate_log_summary_5.py
+        modified:   scripts/generate_log_summary_6.py
+        modified:   scripts/generate_manuals_2.py
+        modified:   scripts/generate_operational_plan_2.py
+        modified:   scripts/generate_qa_review_2.py
+        deleted:    scripts/generate_readme_4.py
+        modified:   scripts/generate_readme_5.py
+        modified:   scripts/generate_release_info_2.py
+        modified:   scripts/inspect_db_schema_6.py
+        modified:   scripts/inspect_users_table_2.py
+        modified:   scripts/install_scripts.py
+        modified:   scripts/install_scripts_1.py
+        modified:   scripts/log_final_run_check_2.py
+        modified:   scripts/scripts.py
+        modified:   scripts/send_email_report_1.py
+        modified:   scripts/send_log_webhook_2.py
+        modified:   scripts/send_summary_email_1.py
+        modified:   scripts/upgrade_users_add_role_2.py
+        modified:   scripts/verify_session_integrity_6.py
+        modified:   scripts/zip_log_exports_6.py
+        deleted:    services/__init___132.py
+        deleted:    services/__init___133.py
+        deleted:    services/__init___134.py
+        deleted:    services/__init___135.py
+        deleted:    services/__init___136.py
+        deleted:    services/__init___137.py
+        deleted:    services/__init___138.py
+        deleted:    services/__init___139.py
+        deleted:    services/__init___140.py
+        deleted:    services/__init___141.py
+        deleted:    services/__init___142.py
+        deleted:    services/__init___143.py
+        deleted:    services/__init___144.py
+        deleted:    services/__init___145.py
+        deleted:    services/__init___146.py
+        deleted:    services/__init___147.py
+        deleted:    services/__init___148.py
+        deleted:    services/__init___149.py
+        deleted:    services/__init___150.py
+        deleted:    services/__init___151.py
+        deleted:    services/__init___152.py
+        deleted:    services/__init___153.py
+        deleted:    services/__init___154.py
+        deleted:    services/__init___155.py
+        deleted:    services/__init___156.py
+        deleted:    services/__init___157.py
+        deleted:    services/__init___158.py
+        deleted:    services/__init___174.py
+        deleted:    services/__init___176.py
+        deleted:    services/__init___182.py
+        deleted:    services/__init___196.py
+        deleted:    services/__init___204.py
+        deleted:    services/__init___213.py
+        deleted:    services/__init___214.py
+        deleted:    services/__init___219.py
+        deleted:    services/__init___220.py
+        deleted:    services/__init___223.py
+        deleted:    services/__init___224.py
+        deleted:    services/__init___225.py
+        deleted:    services/__init___226.py
+        deleted:    services/__init___227.py
+        deleted:    services/__init___228.py
+        deleted:    services/__init___229.py
+        deleted:    services/__init___230.py
+        deleted:    services/__init___231.py
+        deleted:    services/__init___232.py
+        deleted:    services/__init___234.py
+        deleted:    services/__init___236.py
+        deleted:    services/__init___237.py
+        deleted:    services/__init___238.py
+        deleted:    services/__init___239.py
+        deleted:    services/__init___240.py
+        deleted:    services/__init___241.py
+        deleted:    services/__init___242.py
+        deleted:    services/__init___243.py
+        deleted:    services/__init___244.py
+        deleted:    services/__init___245.py
+        deleted:    services/__init___246.py
+        deleted:    services/__init___247.py
+        deleted:    services/__init___248.py
+        deleted:    services/__init___249.py
+        deleted:    services/__init___250.py
+        deleted:    services/__init___251.py
+        deleted:    services/__init___252.py
+        deleted:    services/__init___253.py
+        deleted:    services/__init___254.py
+        deleted:    services/__init___255.py
+        deleted:    services/__init___297.py
+        deleted:    services/__init___298.py
+        deleted:    services/__init___299.py
+        deleted:    services/__init___300.py
+        deleted:    services/__init___301.py
+        deleted:    services/__init___302.py
+        deleted:    services/__init___303.py
+        deleted:    services/__init___304.py
+        deleted:    services/__init___305.py
+        deleted:    services/__init___306.py
+        deleted:    services/__init___307.py
+        deleted:    services/__init___308.py
+        deleted:    services/__init___309.py
+        deleted:    services/__init___310.py
+        deleted:    services/__init___311.py
+        deleted:    services/__init___312.py
+        deleted:    services/__init___313.py
+        deleted:    services/__init___314.py
+        deleted:    services/__init___315.py
+        deleted:    services/__init___316.py
+        deleted:    services/__init___317.py
+        deleted:    services/__init___320.py
+        deleted:    services/__init___321.py
+        deleted:    services/__init___322.py
+        deleted:    services/__init___323.py
+        deleted:    services/__init___324.py
+        deleted:    services/__init___326.py
+        deleted:    services/__init___332.py
+        deleted:    services/__init___333.py
+        deleted:    services/__init___338.py
+        deleted:    services/__init___34.py
+        deleted:    services/__init___340.py
+        deleted:    services/__init___341.py
+        deleted:    services/__init___343.py
+        deleted:    services/__init___345.py
+        deleted:    services/__init___346.py
+        deleted:    services/__init___347.py
+        deleted:    services/__init___349.py
+        deleted:    services/__init___35.py
+        deleted:    services/__init___350.py
+        deleted:    services/__init___352.py
+        deleted:    services/__init___353.py
+        deleted:    services/__init___354.py
+        deleted:    services/__init___355.py
+        deleted:    services/__init___356.py
+        deleted:    services/__init___357.py
+        deleted:    services/__init___358.py
+        deleted:    services/__init___359.py
+        deleted:    services/__init___36.py
+        deleted:    services/__init___360.py
+        deleted:    services/__init___361.py
+        deleted:    services/__init___363.py
+        deleted:    services/__init___366.py
+        deleted:    services/__init___367.py
+        deleted:    services/__init___368.py
+        deleted:    services/__init___371.py
+        deleted:    services/__init___372.py
+        deleted:    services/__init___373.py
+        deleted:    services/__init___374.py
+        deleted:    services/__init___380.py
+        deleted:    services/__init___381.py
+        deleted:    services/__init___382.py
+        deleted:    services/__init___383.py
+        deleted:    services/__init___384.py
+        deleted:    services/__init___385.py
+        deleted:    services/__init___386.py
+        deleted:    services/__init___387.py
+        deleted:    services/__init___389.py
+        deleted:    services/__init___390.py
+        deleted:    services/__init___391.py
+        deleted:    services/__init___392.py
+        deleted:    services/__init___393.py
+        deleted:    services/__init___398.py
+        deleted:    services/__init___399.py
+        deleted:    services/__init___400.py
+        deleted:    services/__init___401.py
+        deleted:    services/__init___41.py
+        deleted:    services/__init___42.py
+        deleted:    services/__init___43.py
+        deleted:    services/__init___44.py
+        deleted:    services/__init___45.py
+        deleted:    services/__init___46.py
+        deleted:    services/__init___47.py
+        deleted:    services/__init___48.py
+        deleted:    services/__init___487.py
+        deleted:    services/__init___488.py
+        deleted:    services/__init___489.py
+        deleted:    services/__init___49.py
+        deleted:    services/__init___490.py
+        deleted:    services/__init___491.py
+        deleted:    services/__init___492.py
+        deleted:    services/__init___493.py
+        deleted:    services/__init___497.py
+        deleted:    services/__init___498.py
+        deleted:    services/__init___499.py
+        deleted:    services/__init___50.py
+        deleted:    services/__init___500.py
+        deleted:    services/__init___501.py
+        deleted:    services/__init___502.py
+        deleted:    services/__init___503.py
+        deleted:    services/__init___504.py
+        deleted:    services/__init___505.py
+        deleted:    services/__init___506.py
+        deleted:    services/__init___507.py
+        deleted:    services/__init___508.py
+        deleted:    services/__init___509.py
+        deleted:    services/__init___51.py
+        deleted:    services/__init___510.py
+        deleted:    services/__init___511.py
+        deleted:    services/__init___512.py
+        deleted:    services/__init___513.py
+        deleted:    services/__init___514.py
+        deleted:    services/__init___515.py
+        deleted:    services/__init___516.py
+        deleted:    services/__init___517.py
+        deleted:    services/__init___518.py
+        deleted:    services/__init___519.py
+        deleted:    services/__init___52.py
+        deleted:    services/__init___520.py
+        deleted:    services/__init___521.py
+        deleted:    services/__init___522.py
+        deleted:    services/__init___523.py
+        deleted:    services/__init___524.py
+        deleted:    services/__init___525.py
+        deleted:    services/__init___526.py
+        deleted:    services/__init___527.py
+        deleted:    services/__init___528.py
+        deleted:    services/__init___529.py
+        deleted:    services/__init___53.py
+        deleted:    services/__init___530.py
+        deleted:    services/__init___531.py
+        deleted:    services/__init___532.py
+        deleted:    services/__init___533.py
+        deleted:    services/__init___534.py
+        deleted:    services/__init___535.py
+        deleted:    services/__init___536.py
+        deleted:    services/__init___537.py
+        deleted:    services/__init___538.py
+        deleted:    services/__init___539.py
+        deleted:    services/__init___54.py
+        deleted:    services/__init___540.py
+        deleted:    services/__init___542.py
+        deleted:    services/__init___543.py
+        deleted:    services/__init___544.py
+        deleted:    services/__init___545.py
+        deleted:    services/__init___546.py
+        deleted:    services/__init___547.py
+        deleted:    services/__init___548.py
+        deleted:    services/__init___55.py
+        deleted:    services/__init___556.py
+        deleted:    services/__init___56.py
+        deleted:    services/__init___565.py
+        deleted:    services/__init___566.py
+        deleted:    services/__init___567.py
+        deleted:    services/__init___568.py
+        deleted:    services/__init___569.py
+        deleted:    services/__init___57.py
+        deleted:    services/__init___570.py
+        deleted:    services/__init___571.py
+        deleted:    services/__init___572.py
+        deleted:    services/__init___573.py
+        deleted:    services/__init___574.py
+        deleted:    services/__init___575.py
+        deleted:    services/__init___576.py
+        deleted:    services/__init___577.py
+        deleted:    services/__init___578.py
+        deleted:    services/__init___579.py
+        deleted:    services/__init___58.py
+        deleted:    services/__init___580.py
+        deleted:    services/__init___581.py
+        deleted:    services/__init___582.py
+        deleted:    services/__init___583.py
+        deleted:    services/__init___584.py
+        deleted:    services/__init___585.py
+        deleted:    services/__init___586.py
+        deleted:    services/__init___587.py
+        deleted:    services/__init___588.py
+        deleted:    services/__init___589.py
+        deleted:    services/__init___59.py
+        deleted:    services/__init___591.py
+        deleted:    services/__init___592.py
+        deleted:    services/__init___60.py
+        deleted:    services/__init___61.py
+        deleted:    services/__init___62.py
+        deleted:    services/__init___63.py
+        deleted:    services/__init___64.py
+        deleted:    services/__init___65.py
+        deleted:    services/__init___66.py
+        deleted:    services/__init___67.py
+        deleted:    services/__init___68.py
+        deleted:    services/__init___69.py
+        deleted:    services/__init___70.py
+        deleted:    services/__init___71.py
+        deleted:    services/__init___72.py
+        deleted:    services/__init___73.py
+        deleted:    services/__init___76.py
+        deleted:    services/__init___77.py
+        deleted:    services/__init___78.py
+        deleted:    services/__init___79.py
+        deleted:    services/__init___8.py
+        deleted:    services/__init___80.py
+        deleted:    services/__init___81.py
+        deleted:    services/__init___82.py
+        deleted:    services/__init___83.py
+        deleted:    services/__init___84.py
+        deleted:    services/__init___85.py
+        deleted:    services/__init___86.py
+        deleted:    services/__init___89.py
+        deleted:    services/__init___9.py
+        deleted:    services/__init___90.py
+        deleted:    services/__init___91.py
+        deleted:    services/__init___92.py
+        deleted:    services/__init___93.py
+        deleted:    services/__init___94.py
+        deleted:    services/__init___95.py
+        deleted:    services/__init___96.py
+        deleted:    services/__init___97.py
+        deleted:    services/__init___98.py
+        deleted:    services/__init___99.py
+        modified:   tests/__pycache__/test_account_runner.cpython-310-pytest-8.4.1.pyc
+        modified:   tools/diff_hashlist.py
+        modified:   tools/filter_needed_files.py
+        modified:   tools/generate_master_hash.py
+        modified:   tools/hash_verify.py
+        modified:   tools/integrity/sha256_integrity_mastertree.py
+        modified:   tools/integrity/verify_integrity_and_identify_unnecessary.py
+        modified:   tools/layout_sim.py
+        modified:   tools/module_trace_auto_recovery.py
+        modified:   tools/needed_files_by_name.py
+        modified:   tools/needed_files_from_imports.py
+        modified:   tools/parse_functions.py
+        modified:   tools/scan_tree.py
+        deleted:    tools/scan_tree_fixed.py
+        modified:   tools/tree_checker.py
+        modified:   utils/env_loader.py
+        modified:   validator/check_and_insert_log.py
+        modified:   validator/check_and_insert_log_2.py
+        modified:   validator/check_command_log.py
+        modified:   validator/check_command_log_6.py
+        modified:   validator/check_conflicting_modules.py
+        modified:   validator/check_disk_log.py
+        modified:   validator/check_disk_log_6.py
+        modified:   validator/check_env_log.py
+        modified:   validator/check_env_log_6.py
+        modified:   validator/check_network_log.py
+        modified:   validator/check_network_log_6.py
+        modified:   validator/check_run_ready.py
+        modified:   validator/check_session_log.py
+        modified:   validator/check_session_log_6.py
+        modified:   validator/check_type_completeness.py
+        modified:   validator/check_wraps.py
+        modified:   validator/check_wt07_status.py
+        modified:   validator/check_wt07_status_6.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .coverage
+        .pre-commit-config.yaml
+        .pylintrc
+        .vscode/
+        backup/file_list_20250807_152731.txt
+        backup/golden_backup_0804.zip
+        backup/missing_verified_final_20250807_1653.csv
+        backup/move_report_20250801_2317.txt
+        backup/usage_analysis_dryrun_20250807_2130.csv
+        backup/xmissing_may_20250807_1633.txt
+        check_schema.py
+        code_rules.txt
+        core/__pycache__/
+        core/add_docstrings.py
+        decorators/__pycache__/
+        encoding_clean_log_0804.txt
+        encoding_report_0804.txt
+        get-pip.py
+        hash_verify_20250730_2353.csv
+        hash_verify_20250731_0004.csv
+        hash_verify_20250731_1436.csv
+        import_trace.log
+        integrity_fingerprint_0804.json
+        logs/pylint_after_fix_0804.txt
+        logs/pylint_final_report_0804.txt
+        logs/pylint_postfix_check_0804.txt
+        logs/pylint_report_0804.json
+        logs/pytest_run_0804.txt
+        logs/recent_modified_files_48h.csv
+        manual_import.dot
+        missfiles_2505_0807_1616.csv
+        modules/__init__.py
+        modules/__pycache__/__init__.cpython-310.pyc
+        modules/actions/
+        modules/common/backup_full_db.py
+        modules/common/backup_trace_log_db.py
+        modules/common/db.py
+        modules/common/image_generator.cpython-313.pyc
+        modules/common/image_generator.py
+        modules/core/
+        modules/deprecated_conflict/
+        modules/dm/interact_DM.py
+        modules/filters/
+        modules/metrics/__init__.py
+        modules/queue/__init__.py
+        modules/queue/_wakeup_socketpair.py
+        modules/sns/
+        modules/translate/
+        pylint_mastertree_result_0804.txt
+        pylint_tests_report.txt
+        pytest.ini
+        requirements.txt
+        scan_lowline_files.csv
+        scripts/export_all_logtables.py
+        scripts/export_all_logtables_1.py
+        scripts/export_all_logtables_to_excel.py
+        scripts/export_all_logtables_to_excel_1.py
+        scripts/export_all_logtables_to_excel_2.py
+        scripts/export_all_logtables_to_excel_3.py
+        scripts/export_all_logtables_to_excel_4.py
+        scripts/export_all_logtables_to_excel_5.py
+        scripts/export_all_logtables_to_excel_6.py
+        scripts/export_all_table_row_counts.py
+        scripts/export_all_table_row_counts_1.py
+        scripts/export_all_table_row_counts_2.py
+        scripts/export_all_table_row_counts_3.py
+        scripts/export_all_table_row_counts_4.py
+        scripts/export_all_table_row_counts_5.py
+        scripts/export_all_table_row_counts_6.py
+        scripts/export_all_tables_with_datetime.py
+        scripts/export_all_tables_with_datetime_1.py
+        scripts/export_all_tables_with_datetime_2.py
+        scripts/export_all_tables_with_datetime_3.py
+        scripts/export_all_tables_with_datetime_4.py
+        scripts/export_all_tables_with_datetime_5.py
+        scripts/export_all_tables_with_datetime_6.py
+        scripts/export_command_log.py
+        scripts/export_command_log_1.py
+        scripts/export_command_log_2.py
+        scripts/export_command_log_3.py
+        scripts/export_command_log_4.py
+        scripts/export_command_log_5.py
+        scripts/export_command_log_6.py
+        scripts/export_db_schema_to_csv.py
+        scripts/export_db_snapshot_excel.py
+        scripts/export_disk_log.py
+        scripts/export_disk_log_1.py
+        scripts/export_disk_log_2.py
+        scripts/export_disk_log_3.py
+        scripts/export_disk_log_4.py
+        scripts/export_disk_log_5.py
+        scripts/export_disk_log_6.py
+        scripts/export_env_log.py
+        scripts/export_env_log_1.py
+        scripts/export_env_log_2.py
+        scripts/export_env_log_3.py
+        scripts/export_env_log_4.py
+        scripts/export_env_log_5.py
+        scripts/export_env_log_6.py
+        scripts/export_feedback_log.py
+        scripts/export_feedback_log_1.py
+        scripts/export_git_commits_to_csv.py
+        scripts/export_hook_logs_to_csv.py
+        scripts/export_hook_logs_to_csv_1.py
+        scripts/export_hook_logs_to_csv_2.py
+        scripts/export_hook_logs_to_csv_3.py
+        scripts/export_hook_logs_to_csv_4.py
+        scripts/export_hook_logs_to_csv_5.py
+        scripts/export_hook_logs_to_csv_6.py
+        scripts/export_log_summary.py
+        scripts/export_log_summary_1.py
+        scripts/export_log_summary_2.py
+        scripts/export_log_summary_csv_with_datetime.py
+        scripts/export_log_summary_csv_with_datetime_1.py
+        scripts/export_log_summary_csv_with_datetime_2.py
+        scripts/export_log_summary_csv_with_datetime_3.py
+        scripts/export_log_summary_csv_with_datetime_4.py
+        scripts/export_log_summary_csv_with_datetime_5.py
+        scripts/export_log_summary_csv_with_datetime_6.py
+        scripts/export_logtrace.py
+        scripts/export_logtrace_1.py
+        scripts/export_logtrace_2.py
+        scripts/export_logtrace_3.py
+        scripts/export_logtrace_4.py
+        scripts/export_logtrace_5.py
+        scripts/export_logtrace_6.py
+        scripts/export_logtrace_table.py
+        scripts/export_logtrace_table_1.py
+        scripts/export_logtrace_to_csv.py
+        scripts/export_logtrace_to_csv_1.py
+        scripts/export_logtrace_to_csv_2.py
+        scripts/export_logtrace_to_csv_3.py
+        scripts/export_logtrace_to_csv_4.py
+        scripts/export_logtrace_to_csv_5.py
+        scripts/export_logtrace_to_csv_6.py
+        scripts/export_logtrace_to_csv_with_datetime.py
+        scripts/export_logtrace_to_csv_with_datetime_1.py
+        scripts/export_logtrace_to_csv_with_datetime_2.py
+        scripts/export_logtrace_to_csv_with_datetime_3.py
+        scripts/export_logtrace_to_csv_with_datetime_4.py
+        scripts/export_logtrace_to_csv_with_datetime_5.py
+        scripts/export_logtrace_to_csv_with_datetime_6.py
+        scripts/export_logtrace_to_excel.py
+        scripts/export_logtrace_to_excel_1.py
+        scripts/export_logtrace_to_excel_2.py
+        scripts/export_logtrace_to_excel_3.py
+        scripts/export_logtrace_to_excel_4.py
+        scripts/export_logtrace_to_excel_5.py
+        scripts/export_logtrace_to_excel_6.py
+        scripts/export_logtrace_to_excel_with_datetime.py
+        scripts/export_logtrace_to_excel_with_datetime_1.py
+        scripts/export_logtrace_to_excel_with_datetime_2.py
+        scripts/export_logtrace_to_excel_with_datetime_3.py
+        scripts/export_logtrace_to_excel_with_datetime_4.py
+        scripts/export_logtrace_to_excel_with_datetime_5.py
+        scripts/export_logtrace_to_excel_with_datetime_6.py
+        scripts/export_logtrace_with_datetime.py
+        scripts/export_logtrace_with_datetime_1.py
+        scripts/export_logtrace_with_datetime_2.py
+        scripts/export_logtrace_with_datetime_3.py
+        scripts/export_logtrace_with_datetime_4.py
+        scripts/export_logtrace_with_datetime_5.py
+        scripts/export_logtrace_with_datetime_6.py
+        scripts/export_logtrace_with_datetime_csv.py
+        scripts/export_logtrace_with_datetime_csv_1.py
+        scripts/export_logtrace_with_datetime_csv_2.py
+        scripts/export_logtrace_with_datetime_csv_3.py
+        scripts/export_logtrace_with_datetime_csv_4.py
+        scripts/export_logtrace_with_datetime_csv_5.py
+        scripts/export_logtrace_with_datetime_csv_6.py
+        scripts/export_logtrace_with_os_path.py
+        scripts/export_logtrace_with_os_path_1.py
+        scripts/export_logtrace_with_os_path_2.py
+        scripts/export_logtrace_with_os_path_3.py
+        scripts/export_logtrace_with_os_path_4.py
+        scripts/export_logtrace_with_os_path_5.py
+        scripts/export_logtrace_with_os_path_6.py
+        scripts/export_network_log.py
+        scripts/export_network_log_1.py
+        scripts/export_network_log_2.py
+        scripts/export_network_log_3.py
+        scripts/export_network_log_4.py
+        scripts/export_network_log_5.py
+        scripts/export_network_log_6.py
+        scripts/export_session_log.py
+        scripts/export_session_log_1.py
+        scripts/export_session_log_2.py
+        scripts/export_session_log_3.py
+        scripts/export_session_log_4.py
+        scripts/export_session_log_5.py
+        scripts/export_session_log_6.py
+        scripts/export_session_qasummary.py
+        scripts/export_session_results_to_csv.py
+        scripts/export_session_results_to_csv_1.py
+        scripts/export_session_results_to_csv_2.py
+        scripts/export_session_results_to_csv_3.py
+        scripts/export_session_results_to_csv_4.py
+        scripts/export_session_results_to_csv_5.py
+        scripts/export_session_results_to_csv_6.py
+        scripts/export_session_results_to_csv_with_datetime.py
+        scripts/export_session_results_to_csv_with_datetime_1.py
+        scripts/export_session_results_to_csv_with_datetime_2.py
+        scripts/export_session_results_to_csv_with_datetime_3.py
+        scripts/export_session_results_to_csv_with_datetime_4.py
+        scripts/export_session_results_to_csv_with_datetime_5.py
+        scripts/export_session_results_to_csv_with_datetime_6.py
+        scripts/export_session_results_with_datetime.py
+        scripts/export_session_results_with_datetime_1.py
+        scripts/export_session_results_with_datetime_2.py
+        scripts/export_session_results_with_datetime_3.py
+        scripts/export_session_results_with_datetime_4.py
+        scripts/export_session_results_with_datetime_5.py
+        scripts/export_session_results_with_datetime_6.py
+        scripts/export_session_results_with_datetime_excel.py
+        scripts/export_session_results_with_datetime_excel_1.py
+        scripts/export_session_results_with_datetime_excel_2.py
+        scripts/export_session_results_with_datetime_excel_3.py
+        scripts/export_session_results_with_datetime_excel_4.py
+        scripts/export_session_results_with_datetime_excel_5.py
+        scripts/export_session_results_with_datetime_excel_6.py
+        scripts/insert_function_log.py
+        small_files.txt
+        tests/__init__.py
+        tests/__pycache__/__init__.cpython-310.pyc
+        tests/__pycache__/test_account_runner_log_coverage.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_api.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_auto_generate_tests.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_cfg_local.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_entry_queue.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_entry_queue_advanced.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_facebook_crawler.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_insta_dm_sender.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_log_trace.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_main_features.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_pprint_util_custom.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_six_util_custom.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_ssl_handler.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_task_queue_mgr.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_unbounded_queue.cpython-310-pytest-8.4.1.pyc
+        tests/__pycache__/test_uploader_instagram.cpython-310-pytest-8.4.1.pyc
+        tests/generated/
+        tests/test_api.py
+        tests/test_auto_generate_tests.py
+        tests/test_cfg_local.py
+        tests/test_entry_queue.py
+        tests/test_insta_dm_sender.py
+        tests/test_log_trace.py
+        tests/test_pprint_util_custom.py
+        tests/test_six_util_custom.py
+        tests/test_ssl_handler.py
+        tests/test_task_queue_mgr.py
+        tests/test_unbounded_queue.py
+        tests/test_uploader_instagram.py
+        tools/.pylintrc
+        tools/add_docstrings_auto.py
+        tools/analyze_missing_usage.py
+        tools/analyze_pylint_report.py
+        tools/auto_generate_tests.py
+        tools/ci_verify_integrity.py
+        tools/fix_e0001_indent_errors.py
+        tools/fix_import_errors.py
+        tools/generate_fingerprint.py
+        tools/remove_bom_normalize.py
+        tools/test_generator/
+        tools/test_safety_checker.py
+        trace_log.txt
+        ui/
+        utils/__pycache__/
+        venv/
+        zero_files.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")

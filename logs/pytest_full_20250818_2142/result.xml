@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="10" failures="0" skipped="0" tests="10" time="2.191" timestamp="2025-08-18T21:42:52.937564+07:00" hostname="DESKTOP-88AA68G"><testcase classname="" name="tests.test_account_runner" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_account_runner' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_account_runner.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_account_runner.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_api" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_api' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_api.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_api.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_auto_generate_tests" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_auto_generate_tests' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_auto_generate_tests.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_auto_generate_tests.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_cfg_local" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_cfg_local' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_cfg_local.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_cfg_local.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_dm_pipeline" time="0.000"><error message="collection failure">C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\_pytest\python.py:498: in importtestmodule
+    mod = import_path(
+C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\_pytest\pathlib.py:587: in import_path
+    importlib.import_module(module_name)
+C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+&lt;frozen importlib._bootstrap&gt;:1050: in _gcd_import
+    ???
+&lt;frozen importlib._bootstrap&gt;:1027: in _find_and_load
+    ???
+&lt;frozen importlib._bootstrap&gt;:1006: in _find_and_load_unlocked
+    ???
+&lt;frozen importlib._bootstrap&gt;:688: in _load_unlocked
+    ???
+C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\_pytest\assertion\rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+tests\test_dm_pipeline.py:9: in &lt;module&gt;
+    from modules.dm.queue import DMQueue
+E     File "C:\SNS_24AutoProject_250723\modules\dm\queue.py", line 107
+E       """
+E       ^^^
+E   IndentationError: expected an indented block after function definition on line 106</error></testcase><testcase classname="" name="tests.test_log_trace" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_log_trace' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_log_trace.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_log_trace.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_pprint_util_custom" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_pprint_util_custom' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_pprint_util_custom.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_pprint_util_custom.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_six_util_custom" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_six_util_custom' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_six_util_custom.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_six_util_custom.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_ssl_handler" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_ssl_handler' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_ssl_handler.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_ssl_handler.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase><testcase classname="" name="tests.test_task_queue_mgr" time="0.000"><error message="collection failure">import file mismatch:
+imported module 'test_task_queue_mgr' has this __file__ attribute:
+  C:\SNS_24AutoProject_250723\tests\generated\test_task_queue_mgr.py
+which is not the same as the test file we want to collect:
+  C:\SNS_24AutoProject_250723\tests\test_task_queue_mgr.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules</error></testcase></testsuite></testsuites>

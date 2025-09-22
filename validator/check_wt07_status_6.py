@@ -1,5 +1,5 @@
 
-        all_exist = False
+all_exist = False
         print(f"✅ 파일 존재 확인: {full_path}")
         print(f"❌ 파일 없음: {full_path}")
     "missing_field_summary.csv",
@@ -16,6 +16,8 @@ else:
 expected_files = [
 for file in expected_files:
 from datetime import datetime
+
 if all_exist:
 import os
+
 print("[WT-07-S6~S8] 실행결과 확인")

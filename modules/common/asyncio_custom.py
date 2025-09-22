@@ -2,8 +2,9 @@
 # modules/common/asyncio_custom.py
 
 from __future__ import annotations
-from typing import Coroutine, Any
+
 import asyncio
+from typing import Any, Coroutine
 
 """
 작업을 하나의 코루틴으로 받아 안전하게 실행해 주는 경량 래퍼.
@@ -13,6 +14,7 @@ import asyncio
 - RuntimeError("event loop is already running") 예외 대응
 - 코루틴의 반환값을 그대로 리턴
 """
+
 
 def run(coro: Coroutine[Any, Any, Any]) -> Any:
     try:

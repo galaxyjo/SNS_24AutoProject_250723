@@ -1,0 +1,49 @@
+logs/hash_compare_result_0807.txt: Has a byte-order marker
+backup/file_list_20250807_152731.txt: Has a byte-order marker
+_NEW_INTAKE/recent_modified_files_48h.csv: Has a byte-order marker
+logs/recent_modified_mastertree_48h.txt: Has a byte-order marker
+.env: Has a byte-order marker
+logs/recent_hash.csv: Has a byte-order marker
+logs/state_20250818_2023/state_summary.txt: Has a byte-order marker
+logs/hash_verify_20250811_2011.csv: Has a byte-order marker
+code_rules.txt: Has a byte-order marker
+logs/relocation_plan.conflict.csv: Has a byte-order marker
+logs/conflict_resolution.csv: Has a byte-order marker
+tools/integrity/sha256_list.20250811_2328.csv: Has a byte-order marker
+hash_verify_20250729_2313.csv: Has a byte-order marker
+.env.example: Has a byte-order marker
+tools/integrity/usage_analysis_20250828_1903.csv: Has a byte-order marker
+backup/usage_analysis_dryrun_20250807_2130.csv: Has a byte-order marker
+db/account_run_log_utf8.csv: Has a byte-order marker
+logs/recent_mapping.resolved.csv: Has a byte-order marker
+backup/missing_verified_final_20250807_1653.csv: Has a byte-order marker
+requirements.txt: Has a byte-order marker
+logs/recent_modified_files_48h.csv: Has a byte-order marker
+logs/current_file_hashes.csv: Has a byte-order marker
+scan_lowline_files.csv: Has a byte-order marker
+tools/integrity/log_hash_match.txt: Has a byte-order marker
+usage_analysis_20250829_2334.csv: Has a byte-order marker
+refined_suspects_250723.txt: Has a byte-order marker
+logs/relocation_plan.conflict.filtered.csv: Has a byte-order marker
+tools/integrity/mastertree_map_full_generated.txt: Has a byte-order marker
+tools/integrity/may_restore_candidates.csv: Has a byte-order marker
+tools/integrity/sha256_list.current.csv (1520 KB) exceeds 500 KB.
+logs/summary/pylint_report_20250826_1245.txt (2237 KB) exceeds 500 KB.
+tools/integrity/sha256_list.20250723_1618.csv (837 KB) exceeds 500 KB.
+logs/state_20250818_1954/hash_tree_20250818_1954.csv (1576 KB) exceeds 500 KB.
+backup/file_list_20250807_152731.txt (871 KB) exceeds 500 KB.
+logs/state_20250818_2023/tree_20250818_2023.csv (2176 KB) exceeds 500 KB.
+pylint_report.txt (2133 KB) exceeds 500 KB.
+logs/state_20250818_2023/hash_tree_20250818_2023.csv (1576 KB) exceeds 500 KB.
+logs/summary/pylint_report_20250825_1723.txt (2237 KB) exceeds 500 KB.
+logs/summary/pylint_report_20250825_1730.txt (2236 KB) exceeds 500 KB.
+pylint_mastertree_result_0804.txt (2405 KB) exceeds 500 KB.
+logs/hash_fix_20250818_2125/hash_tree_before_20250818_2125.csv (1780 KB) exceeds 500 KB.
+tools/integrity/sha256_list.final.csv (1523 KB) exceeds 500 KB.
+hash_verify_20250731_0004.csv (697 KB) exceeds 500 KB.
+hash_verify_20250731_1436.csv (701 KB) exceeds 500 KB.
+hash_verify_20250730_2353.csv (697 KB) exceeds 500 KB.
+logs/pylint_after_fix_0804.txt (2410 KB) exceeds 500 KB.
+tools/integrity/sha256_list.20250811_2328.csv (1520 KB) exceeds 500 KB.
+trace_log.txt (21005 KB) exceeds 500 KB.
+logs/state_20250818_1954/tree_20250818_1954.csv (2175 KB) exceeds 500 KB.

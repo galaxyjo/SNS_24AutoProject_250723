@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, overload
-from typing_extensions import assert_type
 from collections.abc import Sequence  # ✅ 들여쓰기 오류 수정됨
+from typing import TYPE_CHECKING, overload
 
 import trio
+from typing_extensions import assert_type
+
 
 async def sleep_sort(values: Sequence[float]) -> list[float]:
     return sorted(values)
@@ -19,6 +20,7 @@ async def has_optional(arg: int | None = None) -> int:
 async def foo_overloaded(arg: int) -> str: ...
 @overload
 async def foo_overloaded(arg: str) -> int: ...
+
 
 async def foo_overloaded(arg: int | str) -> int | str:
     if isinstance(arg, str):
@@ -40,4 +42,4 @@ if __name__ == "__main__":
     print("foo_overloaded(5) result:", r3)
 
     r4 = trio.run(foo_overloaded, "")
-    print("foo_overloaded(\"\") result:", r4)
+    print('foo_overloaded("") result:', r4)

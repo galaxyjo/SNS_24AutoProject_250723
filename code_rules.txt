@@ -1,0 +1,5 @@
+﻿- BOM 제거, 들여쓰기 스페이스 4 고정
+- pass 사용 금지 → NotImplementedError 또는 최소 로직
+- TODO 단독 금지 → # TODO + 실제 코드 or NotImplementedError
+- core/launcher/modules/services 디렉토리 외 코드는 테스트 전용
+- 0KB 및 50byte 이하 파일은 즉시 백업 이동

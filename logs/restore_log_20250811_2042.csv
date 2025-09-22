@@ -1,0 +1,11 @@
+source,target,status,note
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\db\trace_log.db,C:\SNS_24AutoProject_250723\db\trace_log.db,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\decorators\log_trace.py,C:\SNS_24AutoProject_250723\decorators\log_trace.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\api.py,C:\SNS_24AutoProject_250723\modules\api.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\cfg_loader.py,C:\SNS_24AutoProject_250723\modules\cfg_loader.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\cfg_local.py,C:\SNS_24AutoProject_250723\modules\cfg_local.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\pickle_serializer.py,C:\SNS_24AutoProject_250723\modules\pickle_serializer.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\pprint_util_custom.py,C:\SNS_24AutoProject_250723\modules\pprint_util_custom.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\six_util_custom.py,C:\SNS_24AutoProject_250723\modules\six_util_custom.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\ssl_handler.py,C:\SNS_24AutoProject_250723\modules\ssl_handler.py,OK,Copied
+C:\backup\SNS_24AutoProject_FINAL_20250516_1002\modules\task_queue_mgr.py,C:\SNS_24AutoProject_250723\modules\task_queue_mgr.py,OK,Copied

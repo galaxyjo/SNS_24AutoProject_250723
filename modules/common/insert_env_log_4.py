@@ -1,7 +1,7 @@
+import getpass
 import os
 import platform
 import socket
-import getpass
 import sqlite3
 from datetime import datetime
 

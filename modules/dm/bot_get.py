@@ -1,24 +1,23 @@
 """
-    All methods must return media_ids that can be
+All methods must return media_ids that can be
     passed into e.g. like() or comment() functions.
 """
 
 from tqdm import tqdm
 
-# STORY
-
 
 def get_user_stories(self, user_id):
+    """Function `get_user_stories` docstring."""
     self.api.get_user_stories(user_id)
     try:
         if int(self.api.last_json["reel"]["media_count"]) > 0:
             list_image = []
             list_video = []
             for item in self.api.last_json["reel"]["items"]:
-                if int(item["media_type"]) == 1:  # photo
+                if int(item["media_type"]) == 1:
                     img = item["image_versions2"]["candidates"][0]["url"]
                     list_image.append(img)
-                elif int(item["media_type"]) == 2:  # video
+                elif int(item["media_type"]) == 2:
                     video = item["video_versions"][0]["url"]
                     list_video.append(video)
             return list_image, list_video
@@ -30,16 +29,19 @@ def get_user_stories(self, user_id):
 
 
 def get_self_story_viewers(self, story_id):
+    """Function `get_self_story_viewers` docstring."""
     self.api.get_self_story_viewers(story_id)
     return self.api.last_json
 
 
 def get_user_reel(self, user_id):
+    """Function `get_user_reel` docstring."""
     self.api.get_user_reel(user_id)
     return self.api.last_json
 
 
 def get_media_owner(self, media_id):
+    """Function `get_media_owner` docstring."""
     self.api.media_info(media_id)
     try:
         return str(self.api.last_json.get("items")[0]["user"]["pk"])
@@ -49,16 +51,19 @@ def get_media_owner(self, media_id):
 
 
 def get_user_tags_medias(self, user_id):
+    """Function `get_user_tags_medias` docstring."""
     self.api.get_user_tags(user_id)
     return [str(media["pk"]) for media in self.api.last_json["items"]]
 
 
 def get_popular_medias(self):
+    """Function `get_popular_medias` docstring."""
     self.api.get_popular_feed()
     return [str(media["id"]) for media in self.api.last_json["items"]]
 
 
 def get_your_medias(self, as_dict=False):
+    """Function `get_your_medias` docstring."""
     self.api.get_self_user_feed()
     if as_dict:
         return self.api.last_json.get("items")
@@ -66,6 +71,7 @@ def get_your_medias(self, as_dict=False):
 
 
 def get_archived_medias(self, as_dict=False):
+    """Function `get_archived_medias` docstring."""
     self.api.get_archive_feed()
     if as_dict:
         return self.api.last_json.get("items")
@@ -73,10 +79,10 @@ def get_archived_medias(self, as_dict=False):
 
 
 def get_timeline_medias(self, filtration=True):
+    """Function `get_timeline_medias` docstring."""
     if not self.api.get_timeline_feed():
         self.logger.warning("Error while getting timeline feed.")
         return []
-
     feed_items = [
         item["media_or_ad"]
         for item in self.api.last_json["feed_items"]
@@ -86,6 +92,7 @@ def get_timeline_medias(self, filtration=True):
 
 
 def get_user_medias(self, user_id, filtration=True, is_comment=False):
+    """Function `get_user_medias` docstring."""
     user_id = self.convert_to_user_id(user_id)
     self.api.get_user_feed(user_id)
     if self.api.last_json["status"] == "fail":
@@ -97,6 +104,7 @@ def get_user_medias(self, user_id, filtration=True, is_comment=False):
 
 
 def get_total_user_medias(self, user_id):
+    """Function `get_total_user_medias` docstring."""
     user_id = self.convert_to_user_id(user_id)
     medias = self.api.get_total_user_feed(user_id)
     if self.api.last_json["status"] == "fail":
@@ -106,6 +114,7 @@ def get_total_user_medias(self, user_id):
 
 
 def get_last_user_medias(self, user_id, amount):
+    """Function `get_last_user_medias` docstring."""
     user_id = self.convert_to_user_id(user_id)
     medias = self.api.get_last_user_feed(user_id, amount)
     if self.api.last_json["status"] == "fail":
@@ -115,6 +124,7 @@ def get_last_user_medias(self, user_id, amount):
 
 
 def get_user_likers(self, user_id, media_count=10):
+    """Function `get_user_likers` docstring."""
     your_likers = set()
     media_items = self.get_user_medias(user_id, filtration=False)
     if not media_items:
@@ -129,6 +139,7 @@ def get_user_likers(self, user_id, media_count=10):
 
 
 def get_hashtag_medias(self, hashtag, filtration=True):
+    """Function `get_hashtag_medias` docstring."""
     if not self.api.get_hashtag_feed(hashtag):
         self.logger.warning("Error while getting hashtag feed.")
         return []
@@ -136,33 +147,32 @@ def get_hashtag_medias(self, hashtag, filtration=True):
 
 
 def get_total_hashtag_medias(self, hashtag, amount=100, filtration=False):
+    """Function `get_total_hashtag_medias` docstring."""
     medias = self.api.get_total_hashtag_feed(hashtag, amount)
-
     return self.filter_medias(medias, filtration=filtration)
 
 
 def get_geotag_medias(self, geotag, filtration=True):
-    # TODO: returns list of medias from geotag
+    """Function `get_geotag_medias` docstring."""
     pass
 
 
 def get_locations_from_coordinates(self, latitude, longitude):
+    """Function `get_locations_from_coordinates` docstring."""
     self.api.search_location(lat=latitude, lng=longitude)
     all_locations = self.api.last_json.get("items")
     filtered_locations = []
-
     for location in all_locations:
         location_lat = location["location"]["lat"]
         location_lng = location["location"]["lng"]
-
         if int(location_lat) == int(latitude):
             if int(location_lng) == int(longitude):
                 filtered_locations.append(location)
-
     return filtered_locations
 
 
 def get_media_info(self, media_id):
+    """Function `get_media_info` docstring."""
     if isinstance(media_id, dict):
         return media_id
     self.api.media_info(media_id)
@@ -173,6 +183,7 @@ def get_media_info(self, media_id):
 
 
 def get_timeline_users(self):
+    """Function `get_timeline_users` docstring."""
     if not self.api.get_timeline_feed():
         self.logger.warning("Error while getting timeline feed.")
         return []
@@ -191,6 +202,7 @@ def get_timeline_users(self):
 
 
 def get_hashtag_users(self, hashtag):
+    """Function `get_hashtag_users` docstring."""
     if not self.api.get_hashtag_feed(hashtag):
         self.logger.warning("Error while getting hashtag feed.")
         return []
@@ -198,11 +210,12 @@ def get_hashtag_users(self, hashtag):
 
 
 def get_geotag_users(self, geotag):
-    # TODO: returns list user_ids who just posted on this geotag
+    """Function `get_geotag_users` docstring."""
     pass
 
 
 def get_user_id_from_username(self, username):
+    """Function `get_user_id_from_username` docstring."""
     if username not in self._usernames:
         self.api.search_username(username)
         self.very_small_delay()
@@ -214,13 +227,15 @@ def get_user_id_from_username(self, username):
 
 
 def get_username_from_user_id(self, user_id):
+    """Function `get_username_from_user_id` docstring."""
     user_info = self.get_user_info(user_id)
     if user_info and "username" in user_info:
         return str(user_info["username"])
-    return None  # Not found
+    return None
 
 
 def get_user_info(self, user_id, use_cache=True):
+    """Function `get_user_info` docstring."""
     user_id = self.convert_to_user_id(user_id)
     if not use_cache or user_id not in self._user_infos:
         self.api.get_username_info(user_id)
@@ -233,18 +248,21 @@ def get_user_info(self, user_id, use_cache=True):
 
 
 def get_user_followers(self, user_id, nfollows):
+    """Function `get_user_followers` docstring."""
     user_id = self.convert_to_user_id(user_id)
     followers = self.api.get_total_followers(user_id, nfollows)
     return [str(item["pk"]) for item in followers][::-1] if followers else []
 
 
 def get_user_following(self, user_id, nfollows=None):
+    """Function `get_user_following` docstring."""
     user_id = self.convert_to_user_id(user_id)
     following = self.api.get_total_followings(user_id, nfollows)
     return [str(item["pk"]) for item in following][::-1] if following else []
 
 
 def get_comment_likers(self, comment_id):
+    """Function `get_comment_likers` docstring."""
     self.api.get_comment_likers(comment_id)
     if "users" not in self.api.last_json:
         self.logger.info("Comment with %s not found." % comment_id)
@@ -253,6 +271,7 @@ def get_comment_likers(self, comment_id):
 
 
 def get_media_likers(self, media_id):
+    """Function `get_media_likers` docstring."""
     self.api.get_media_likers(media_id)
     if "users" not in self.api.last_json:
         self.logger.info("Media with %s not found." % media_id)
@@ -261,6 +280,7 @@ def get_media_likers(self, media_id):
 
 
 def get_media_comments(self, media_id, only_text=False):
+    """Function `get_media_comments` docstring."""
     self.api.get_media_comments(media_id)
     if "comments" not in self.api.last_json:
         return []
@@ -270,10 +290,10 @@ def get_media_comments(self, media_id, only_text=False):
 
 
 def get_media_comments_all(self, media_id, only_text=False, count=False):
+    """Function `get_media_comments_all` docstring."""
     has_more_comments = True
     max_id = ""
     comments = []
-
     while has_more_comments:
         self.api.get_media_comments(media_id, max_id=max_id)
         for comment in self.api.last_json["comments"]:
@@ -285,7 +305,6 @@ def get_media_comments_all(self, media_id, only_text=False, count=False):
             self.logger.info("Getting comments stopped by count (%s)." % count)
         if has_more_comments:
             max_id = self.api.last_json["next_max_id"]
-
     if only_text:
         return [
             str(item["text"])
@@ -297,6 +316,7 @@ def get_media_comments_all(self, media_id, only_text=False, count=False):
 
 
 def get_media_commenters(self, media_id):
+    """Function `get_media_commenters` docstring."""
     self.get_media_comments(media_id)
     if "comments" not in self.api.last_json:
         return []
@@ -304,6 +324,7 @@ def get_media_commenters(self, media_id):
 
 
 def search_users(self, query):
+    """Function `search_users` docstring."""
     self.api.search_users(query)
     if "users" not in self.api.last_json:
         self.logger.info("Users with %s not found." % query)
@@ -312,6 +333,7 @@ def search_users(self, query):
 
 
 def get_comment(self):
+    """Function `get_comment` docstring."""
     try:
         return self.comments_file.random().strip()
     except IndexError:
@@ -319,12 +341,12 @@ def get_comment(self):
 
 
 def get_media_id_from_link(self, link):
+    """Function `get_media_id_from_link` docstring."""
     if "instagram.com/p/" not in link:
         self.logger.error("Unexpected link")
         return False
     link = link.split("/")
     code = link[link.index("p") + 1]
-
     alphabet = {
         "-": 62,
         "1": 53,
@@ -391,7 +413,6 @@ def get_media_id_from_link(self, link):
         "x": 49,
         "z": 51,
     }
-
     result = 0
     for char in code:
         result = result * 64 + alphabet[char]
@@ -399,10 +420,10 @@ def get_media_id_from_link(self, link):
 
 
 def get_link_from_media_id(self, media_id):
+    """Function `get_link_from_media_id` docstring."""
     if media_id.find("_"):
         new = media_id.split("_")
         media_id = new[0]
-
     alphabet = {
         "-": 62,
         "1": 53,
@@ -477,23 +498,25 @@ def get_link_from_media_id(self, media_id):
 
 
 def get_messages(self):
+    """Function `get_messages` docstring."""
     if self.api.get_inbox_v2():
         return self.api.last_json
     else:
-        self.logger.info("Messages were not found, " "something went wrong.")
+        self.logger.info("Messages were not found, something went wrong.")
         return None
 
 
 def convert_to_user_id(self, x):
+    """Function `convert_to_user_id` docstring."""
     x = str(x)
     if not x.isdigit():
         x = x.lstrip("@")
         x = self.get_user_id_from_username(x)
-    # if type is not str than it is int so user_id passed
     return x
 
 
 def get_pending_follow_requests(self):
+    """Function `get_pending_follow_requests` docstring."""
     self.api.get_pending_friendships()
     if self.api.last_json.get("users"):
         return self.api.last_json.get("users")
@@ -503,6 +526,7 @@ def get_pending_follow_requests(self):
 
 
 def get_pending_thread_requests(self):
+    """Function `get_pending_thread_requests` docstring."""
     self.api.get_pending_inbox()
     threads = self.api.last_json["inbox"]["threads"]
     if not threads:
@@ -518,7 +542,5 @@ def get_muted_friends(self, muted_content):
     if self.api.last_json.get("users"):
         return [str(user.get("pk")) for user in self.api.last_json.get("users")]
     else:
-        self.logger.info(
-            "No users with muted {} " "in your friends".format(muted_content)
-        )
+        self.logger.info("No users with muted {} in your friends".format(muted_content))
         return []

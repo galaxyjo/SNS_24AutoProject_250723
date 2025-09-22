@@ -1,0 +1,4 @@
+filename,statements,missing,excluded,percent_covered
+modules\core\checkpoint.py,2,2,0,0.0
+modules\core\main_features.py,22,22,3,0.0
+modules\core\parking_lot.py,15,15,0,0.0

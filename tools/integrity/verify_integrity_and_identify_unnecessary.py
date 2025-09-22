@@ -1,7 +1,8 @@
 # verify_integrity_and_identify_unnecessary.py
-import os
 import hashlib
 import json
+import os
+
 
 def calculate_sha256(file_path):
     h = hashlib.sha256()
@@ -10,8 +11,9 @@ def calculate_sha256(file_path):
             for chunk in iter(lambda: f.read(4096), b""):
                 h.update(chunk)
         return h.hexdigest()
-    except:
+    except BaseException:
         return None
+
 
 def main():
     root = input("📂 프로젝트 루트 경로 입력: ").strip()
@@ -63,6 +65,7 @@ def main():
             print("-", d)
     if not changed and not new_files and not deleted:
         print("모든 파일이 기준과 일치합니다.")
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,11 @@
+# coverage 임계치 설정 (모듈별 최소 퍼센트)
+default: 0.0
+
+core: 100.0
+sns: 80.0
+dm: 75.0
+trade: 70.0
+uploader: 90.0
+utils: 85.0
+routes: 90.0
+tests: 0.0
