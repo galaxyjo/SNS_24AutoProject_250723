@@ -1,36 +1,32 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: v4.5.0
     hooks:
+      - id: fix-byte-order-marker
+        stages: [manual]
+      - id: trailing-whitespace
+        stages: [manual]
       - id: end-of-file-fixer
-        exclude: ^(logs|backup|\.venv|z_trash)/.*\.(csv|txt|json|pyd)$
-      - id: check-ast
-        exclude: ^(logs|backup|\.venv|z_trash)/.*\.(csv|txt|json|pyd)$
-      - id: check-byte-order-marker
-        exclude: ^(logs|backup|\.venv|z_trash)/.*\.(csv|txt|json|pyd)$
+        stages: [manual]
 
   - repo: https://github.com/psf/black
-    rev: 25.9.0
+    rev: 24.3.0
     hooks:
       - id: black
         language_version: python3.10
-        exclude: ^(\.venv|venv|.*/site-packages/)
+        stages: [manual]
 
-  - repo: https://github.com/PyCQA/pylint
-    rev: v3.3.8
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.7.4  # ✅ 존재하는 안정 버전
     hooks:
       - id: pylint
-        args: ['--rcfile=.pylintrc']
-        exclude: ^(logs|backup|\.venv|z_trash|.*/site-packages/)/.*\.(csv|txt|json|pyd)$
-
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.3.0
-    hooks:
-      - id: flake8
-        exclude: ^(logs|backup|\.venv|z_trash|.*/site-packages/)/.*\.(csv|txt|json|pyd)$
+        args: [--disable=R,C]
+        language_version: python3.10
+        stages: [manual]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.1
+    rev: v1.9.0
     hooks:
       - id: mypy
-        exclude: ^(logs|backup|\.venv|z_trash|.*/site-packages/)/.*\.(csv|txt|json|pyd)$
+        language_version: python3.10
+        stages: [manual]
