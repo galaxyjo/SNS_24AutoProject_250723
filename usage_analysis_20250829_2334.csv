@@ -1,4 +1,4 @@
-﻿filename,used_in_main_chain,used_by
+filename,used_in_main_chain,used_by
 modules/account_runner.py,✅,main_chain
 modules/ast_graph_builder.py,✅,main_chain
 modules/auto_generate/runner.py,✅,main_chain

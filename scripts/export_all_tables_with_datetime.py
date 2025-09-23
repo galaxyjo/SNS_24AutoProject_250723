@@ -1,38 +1,81 @@
 # -*- coding: utf-8 -*-
+"""
+Export all tables from SQLite DB to Excel with datetime suffix.
+- Uses DB_PATH and EXPORT_PATH from .env
+- Creates timestamped filename automatically
+"""
+
 import os
 import sys
-
+import sqlite3
+import datetime
+import pandas as pd
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
-BASE_PATH = os.getenv("BASE_PATH")
+# Load environment
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
+
+BASE_PATH = os.getenv("BASE_PATH", BASE_DIR)
 DB_PATH = os.getenv("DB_PATH")
-LOG_PATH = os.getenv("LOG_PATH")
-EXPORT_PATH = os.getenv("EXPORT_PATH")
-MODULE_PATH = os.getenv("MODULE_PATH")
-sys.path.append(MODULE_PATH)
-os.chdir(BASE_PATH)
-import datetime
-import os
-import sqlite3
+EXPORT_DIR = os.getenv("EXPORT_PATH")
 
-import pandas as pd
+# Default fallback if not defined
+if not DB_PATH:
+    DB_PATH = os.path.join(BASE_PATH, "db", "account_log.db")
+if not EXPORT_DIR:
+    EXPORT_DIR = os.path.join(BASE_PATH, "logs", "exports")
 
-DB_PATH = r"C:\BackUp_ehcho_galaxy\logs\trace_log.db"
-EXPORT_DIR = r"C:\BackUp_ehcho_galaxy\logs\exports"
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
-EXPORT_PATH = os.path.join(
-    EXPORT_DIR,
-    "export_all_tables_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + ".xlsx",
-)
+# Ensure working dir
+os.chdir(BASE_PATH)
+sys.path.append(BASE_PATH)
 
-conn = sqlite3.connect(DB_PATH)
-tables = pd.read_sql_query("SELECT name FROM sqlite_master WHERE type='table'", conn)
 
-with pd.ExcelWriter(EXPORT_PATH, engine="xlsxwriter") as writer:
-    for table in tables["name"]:
-        df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
-        df.to_excel(writer, sheet_name=table, index=False)
+def export_all_tables_with_datetime(db_path: str, export_dir: str) -> str:
+    """Export all tables in SQLite DB to Excel, filename with datetime suffix."""
+    if not os.path.exists(db_path):
+        raise FileNotFoundError(f"DB not found: {db_path}")
 
-conn.close()
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    tables = [row[0] for row in cursor.fetchall()]
+
+    if not tables:
+        raise RuntimeError("No tables found in DB")
+
+    export_path = os.path.join(
+        export_dir,
+        f"export_all_tables_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+    )
+
+    # Pick Excel engine dynamically
+    engine = "xlsxwriter"
+    try:
+        __import__("xlsxwriter")
+    except ImportError:
+        engine = "openpyxl"
+
+    with pd.ExcelWriter(export_path, engine=engine) as writer:
+        for table in tables:
+            try:
+                df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
+                df.to_excel(
+                    writer, sheet_name=table[:31], index=False
+                )  # Excel limit 31 chars
+            except Exception as e:
+                print(f"⚠️ Failed to export table {table}: {e}")
+
+    conn.close()
+    print(f"✅ Export complete → {export_path}")
+    return export_path
+
+
+def main():
+    export_all_tables_with_datetime(DB_PATH, EXPORT_DIR)
+
+
+if __name__ == "__main__":
+    main()

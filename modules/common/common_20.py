@@ -1,9 +1,10 @@
+# modules/common/common_20.py
 
-x for x in sorted(transformation_kernels) if x != "cumcount"
-# There is no Series.cumcount or DataFrame.cumcount
-]
-    frame_transform_kernels = [x for x in sorted(transformation_kernels) if x != "cumcount"]
-    from pandas.core.groupby.base import transformation_kernels
-    series_transform_kernels = [
-
-pass
+def get_list_element(lst, index):
+    if not isinstance(lst, list):
+        raise TypeError("lst must be a list")
+    if not isinstance(index, int):
+        raise TypeError("index must be an integer")
+    if index < 0 or index >= len(lst):
+        raise IndexError("index out of range")
+    return lst[index]

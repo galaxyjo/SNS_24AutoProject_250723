@@ -1,33 +1,43 @@
-
-_core.reschedule(task, outcome.Error(copy.copy(exc)))
-                raise_at_end = True
-            else:
-            if task is current_task:
-            setattr(waiters, attr_name, None)
-        current_task = _core.current_task()
-        current_task = None
-        if task is not None:
-        raise exc
-        task = getattr(waiters, attr_name)
-    except RuntimeError:
-    for attr_name in ["read_task", "write_task"]:
-    from ._io_epoll import EpollWaiters
-    from ._io_windows import AFDWaiters
-    if raise_at_end:
-    raise_at_end = False
-    try:
 # -*- coding: utf-8 -*-
-# Utility function shared between _io_epoll and _io_windows
-def wake_all(waiters: EpollWaiters | AFDWaiters, exc: BaseException) -> None:
-from __future__ import annotations
+# Utility functions for I/O queues
 
-from typing import TYPE_CHECKING
+from queue import Queue, Empty
+from typing import Any, Optional
 
-from .. import _core
+__all__ = ["wake_all", "try_get"]
 
-if TYPE_CHECKING:
-import copy
 
-import outcome
+def wake_all(queues: list[Queue]) -> None:
+    """
+    Put None into all queues to wake up waiting consumers.
+    If a queue is closed or put fails, continue to next.
+    """
+    for idx, q in enumerate(queues):
+        try:
+            q.put_nowait(None)
+            print(f"✅ Queue {idx} wake signal sent")
+        except Exception as e:
+            print(f"⚠️ Queue {idx} put failed: {e}")
 
-pass
+
+def try_get(q: Queue, timeout: float = 1.0) -> Optional[Any]:
+    """
+    Try to get an item from queue with timeout.
+    Return None if queue is empty.
+    """
+    try:
+        item = q.get(timeout=timeout)
+        print(f"✅ Retrieved item: {item}")
+        return item
+    except Empty:
+        print("⚠️ Queue is empty (timeout)")
+        return None
+
+
+if __name__ == "__main__":
+    # Quick manual test
+    q1 = Queue()
+    q2 = Queue()
+    wake_all([q1, q2])
+    print(try_get(q1))
+    print(try_get(q2))

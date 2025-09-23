@@ -1,4 +1,4 @@
-﻿data\exported_data\export_all_table_row_counts.py
+data\exported_data\export_all_table_row_counts.py
 data\exported_data\export_all_logtables_to_excel.py
 db\insert_env_log_6.py
 db\insert_function_log.py

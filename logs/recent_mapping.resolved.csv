@@ -1,4 +1,4 @@
-﻿"sha256","filename","current_fullpath","mastertree_target_relpath","match_type","status"
+"sha256","filename","current_fullpath","mastertree_target_relpath","match_type","status"
 "8E6F3AB760F6974A3AB2846556E8B42543B6D1DA68063F408204E2EF3E6B96D2",".coverage","C:\SNS_24AutoProject_250723\.coverage",".coverage","hash","OK"
 "4F562FF7066E4FFCC7C359E4480CCF7810FD79D7FC4D696DC835210880D13870",".pylintrc","C:\SNS_24AutoProject_250723\.pylintrc",".pylintrc","hash","OK"
 "C2090B3009E3DCEB804323B506490F540D24449BDB1D8A8BA8E546E57DFB1ABE","broken_files.txt","C:\SNS_24AutoProject_250723\broken_files.txt","broken_files.txt","hash","OK"
