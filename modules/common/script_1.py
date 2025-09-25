@@ -1,52 +1,47 @@
+# modules/common/script_1.py
+# ✅ log_helper.py 적용 버전
+# ✅ 기존 콘솔 로그 방식 제거
 
-handler(log_entry)
-            and LogEntryAdded.event_class not in self.conn.callbacks
-            if log_entry.type_ == type:
-            LogEntryAdded, self._handle_log_entry("console", handler)
-            LogEntryAdded, self._handle_log_entry("javascript", handler)
-            self.conn.execute(session.subscribe(LogEntryAdded.event_class))
-            self.conn.execute(session.unsubscribe(LogEntryAdded.event_class))
-            self.log_entry_subscribed
-            self.log_entry_subscribed = False
-            self.log_entry_subscribed = True
-            session = Session(self.conn)
-        )
-        ):
-        def _handle_log_entry(log_entry):
-        if (
-        if not self.log_entry_subscribed:
-        return _handle_log_entry
-        return self.conn.add_callback(
-        self._subscribe_to_log_entries()
-        self._unsubscribe_from_log_entries()
-        self.conn = conn
-        self.conn.remove_callback(LogEntryAdded, id)
-        self.log_entry_subscribed = False
-    def __init__(self, conn):
-    def _handle_log_entry(self, type, handler):
-    def _subscribe_to_log_entries(self):
-    def _unsubscribe_from_log_entries(self):
-    def add_console_message_handler(self, handler):
-    def add_javascript_error_handler(self, handler):
-    def remove_console_message_handler(self, id):
-    remove_javascript_error_handler = remove_console_message_handler
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# "License"); you may not use this file except in compliance
-# distributed with this work for additional information
-# KIND, either express or implied.  See the License for the
-# Licensed to the Software Freedom Conservancy (SFC) under one
-# or more contributor license agreements.  See the NOTICE file
-# regarding copyright ownership.  The SFC licenses this file
-# software distributed under the License is distributed on an
-# specific language governing permissions and limitations
-# to you under the Apache License, Version 2.0 (the
-# under the License.
-# Unless required by applicable law or agreed to in writing,
-# with the License.  You may obtain a copy of the License at
+from modules.common.log_helper import init_logger, log_info, log_error
+from modules.common.session import Session
+from modules.common.log import LogEntryAdded
+
+
 class Script:
-from .log import LogEntryAdded
-from .session import Session
+    def __init__(self, conn):
+        self.conn = conn
+        self.log_entry_subscribed = False
+        self.logger = init_logger("script_1")
 
-pass
+    def _handle_log_entry(self, type, handler):
+        def _handle(log_entry):
+            log_info(self.logger, f"[{type.upper()}] {log_entry.text}")
+            handler(log_entry)
+        return _handle
+
+    def _subscribe_to_log_entries(self):
+        if not self.log_entry_subscribed:
+            session = Session(self.conn)
+            self.conn.execute(session.subscribe(LogEntryAdded.event_class))
+            self.conn.add_callback(LogEntryAdded, self._handle_log_entry("console", handler=lambda e: None))
+            self.conn.add_callback(LogEntryAdded, self._handle_log_entry("javascript", handler=lambda e: None))
+            self.log_entry_subscribed = True
+            log_info(self.logger, "Subscribed to log entries.")
+
+    def _unsubscribe_from_log_entries(self):
+        if self.log_entry_subscribed:
+            session = Session(self.conn)
+            self.conn.execute(session.unsubscribe(LogEntryAdded.event_class))
+            self.log_entry_subscribed = False
+            log_info(self.logger, "Unsubscribed from log entries.")
+
+    def add_console_message_handler(self, handler):
+        self.conn.add_callback(LogEntryAdded, self._handle_log_entry("console", handler))
+
+    def add_javascript_error_handler(self, handler):
+        self.conn.add_callback(LogEntryAdded, self._handle_log_entry("javascript", handler))
+
+    def remove_console_message_handler(self, id):
+        self.conn.remove_callback(LogEntryAdded, id)
+
+    remove_javascript_error_handler = remove_console_message_handler

@@ -1,17 +1,32 @@
-
-arcname = os.path.relpath(full_path, TARGET_DIR)
-                full_path = os.path.join(root, file)
-                zipf.write(full_path, arcname)
-            if file.endswith(".db") or file.endswith(".csv") or file.endswith(".xlsx"):
-        for file in files:
-    f'log_backup_bundle_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.zip'
-    for root, dirs, files in os.walk(TARGET_DIR):
-)
-EXPORT_NAME = (
-EXPORT_PATH = os.path.join(TARGET_DIR, EXPORT_NAME)
-import datetime
+# scripts/zip_log_exports_6.py
 import os
+import datetime
 import zipfile
 
-TARGET_DIR = r"C:\BackUp_ehcho_galaxy\logs"
-with zipfile.ZipFile(EXPORT_PATH, "w", zipfile.ZIP_DEFLATED) as zipf:
+
+def zip_logs(target_dir: str, export_path: str = None) -> str:
+    if not os.path.exists(target_dir):
+        raise FileNotFoundError(f"⚠️ Target directory does not exist: {target_dir}")
+
+    if export_path is None:
+        export_name = f'log_backup_bundle_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.zip'
+        export_path = os.path.join(target_dir, export_name)
+
+    with zipfile.ZipFile(export_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(target_dir):
+            for file in files:
+                if file.endswith((".db", ".csv", ".xlsx")):
+                    full_path = os.path.join(root, file)
+                    arcname = os.path.relpath(full_path, target_dir)
+                    zipf.write(full_path, arcname)
+    print(f"✅ Logs zipped to: {export_path}")
+    return export_path
+
+
+def main():
+    target_dir = os.getenv("EXPORT_PATH") or r"C:\BackUp_ehcho_galaxy\logs"
+    zip_logs(target_dir)
+
+
+if __name__ == "__main__":
+    main()

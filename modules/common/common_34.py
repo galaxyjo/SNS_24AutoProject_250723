@@ -1,34 +1,33 @@
+# modules/common/common_34.py (정밀 디버깅 후 전체 스크립트)
 
---------
-   -----------
-       method: The method to execute.
-        params = {}
-        params: The parameters to pass to the method. Default is None.
-        The response from the command execution.
-    """
-    """Build a command iterator to send to the BiDi protocol.
-    cmd = yield command
-    command = {"method": method, "params": params}
-    if params is None:
-    Parameters:
-    return cmd
-    Returns:
-    #
-    #   http://www.apache.org/licenses/LICENSE-2.0
-    # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    # "License"); you may not use this file except in compliance
-    # distributed with this work for additional information
-    # KIND, either express or implied.  See the License for the
-    # Licensed to the Software Freedom Conservancy (SFC) under one
-    # or more contributor license agreements.  See the NOTICE file
-    # regarding copyright ownership.  The SFC licenses this file
-    # software distributed under the License is distributed on an
-    # specific language governing permissions and limitations
-    # to you under the Apache License, Version 2.0 (the
-    # under the License.
-    # Unless required by applicable law or agreed to in writing,
-    # with the License.  You may obtain a copy of the License at
-def command_builder(method: str, params: Dict = None) -> Dict:
-from typing import Dict
+import os
+import sys
+import json
 
-pass
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+def load_json_file(path: str) -> dict:
+    """지정된 경로의 JSON 파일을 읽어 dict 반환"""
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"파일이 존재하지 않습니다: {path}")
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_json_file(data: dict, path: str) -> None:
+    """dict 데이터를 지정된 경로의 JSON 파일로 저장"""
+    folder = os.path.dirname(path)
+    if not os.path.exists(folder):
+        os.makedirs(folder, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+def main():
+    """테스트용 main 함수"""
+    test_path = os.path.join(os.path.dirname(__file__), "test.json")
+    sample_data = {"key": "value"}
+    save_json_file(sample_data, test_path)
+    loaded = load_json_file(test_path)
+    print("✅ JSON 파일 읽기/쓰기 확인:", loaded)
+
+if __name__ == "__main__":
+    main()

@@ -1,53 +1,65 @@
-
-continue
-            df = pd.read_sql_query(f"SELECT session_id FROM {table}", conn)
-            session_ids.update(df["session_id"].dropna().unique())
-        all_session_ids[name] = ids
-        all_session_ids[name] = set()
-        except:
-        ids = load_session_ids(path)
-        row[name] = sid in all_session_ids[name]
-        try:
-    "env_log": "db/env_log.db",
-    "session_log": "db/session_log.db",
-    "trace_log": "db/trace_log.db",
-    (df["trace_log"] != True) | (df["session_log"] != True) | (df["env_log"] != True)
-    conn = sqlite3.connect(db_path)
-    conn.close()
-    cursor = conn.cursor()
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-    else:
-    for name in DB_FILES:
-    for table in tables:
-    if os.path.exists(path):
-    results.append(row)
-    return session_ids
-    row = {"session_id": sid}
-    session_ids = set()
-    tables = [row[0] for row in cursor.fetchall()]
-]
-}
-all_session_ids = {}
-combined = set.union(*all_session_ids.values())
-DB_FILES = {
-def load_session_ids(db_path):
-df = pd.DataFrame(results)
-df.to_csv(OUTPUT_CSV, index=False)
-for name, path in DB_FILES.items():
-for sid in combined:
+# scripts/verify_session_integrity_6.py
 import os
 import sqlite3
 from datetime import datetime
 
 import pandas as pd
 
-missing = df[
-missing.to_csv(SUMMARY_CSV, index=False)
-os.makedirs("logs/qa", exist_ok=True)
-OUTPUT_CSV = f"logs/qa/qa_session_check_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
-print(f"✅ 세션 무결성 확인 완료: {OUTPUT_CSV}")
-print(f"⚠️ 누락 요약 저장: {SUMMARY_CSV}")
-results = []
-SUMMARY_CSV = "logs/qa/missing_field_summary.csv"
+DB_FILES = {
+    "env_log": "db/env_log.db",
+    "session_log": "db/session_log.db",
+    "trace_log": "db/trace_log.db",
+}
 
-pass
+OUTPUT_DIR = os.path.join("logs", "qa")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+OUTPUT_CSV = os.path.join(OUTPUT_DIR, f"qa_session_check_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
+SUMMARY_CSV = os.path.join(OUTPUT_DIR, "missing_field_summary.csv")
+
+
+def load_session_ids(db_path):
+    if not os.path.exists(db_path):
+        return set()
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    tables = [row[0] for row in cursor.fetchall()]
+    session_ids = set()
+    for table in tables:
+        try:
+            df = pd.read_sql_query(f"SELECT session_id FROM {table}", conn)
+            session_ids.update(df["session_id"].dropna().unique())
+        except Exception:
+            continue
+    conn.close()
+    return session_ids
+
+
+def main():
+    all_session_ids = {}
+    for name, path in DB_FILES.items():
+        all_session_ids[name] = load_session_ids(path)
+
+    combined_ids = set.union(*[ids for ids in all_session_ids.values() if ids])
+    results = []
+
+    for name, ids in all_session_ids.items():
+        row = {}
+        for sid in combined_ids:
+            row[sid] = sid in ids
+        results.append(row)
+
+    df = pd.DataFrame(results)
+    df.to_csv(OUTPUT_CSV, index=False)
+
+    # 누락 체크
+    missing = df[(df != True).any(axis=1)]
+    if not missing.empty:
+        missing.to_csv(SUMMARY_CSV, index=False)
+        print(f"⚠️ 누락 요약 저장: {SUMMARY_CSV}")
+
+    print(f"✅ 세션 무결성 확인 완료: {OUTPUT_CSV}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,32 +1,38 @@
+# modules/common/hook_status_logger.py
 
-("pre-commit", "fail", str(e)),
-        ("pre-commit", "success", result.stdout.strip()),
-        executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        f"""
-        hook_type TEXT,
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        INSERT INTO {TABLE_NAME} (hook_type, status, message)
-        message TEXT,
-        status TEXT,
-        VALUES (?, ?, ?)
-    """,
-    )
-    CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
-    cur.execute(
-    f"""
-    result = subprocess.run(["git", "status"], capture_output=True, text=True)
-"""
-# -*- coding: utf-8 -*-
-)
-conn = sqlite3.connect(DB_PATH)
-conn.close()
-conn.commit()
-cur = conn.cursor()
-cur.execute(
-DB_PATH = r"C:\BackUp_ehcho_galaxy\logs\trace_log.db"
-except Exception as e:
+import os
 import sqlite3
-import subprocess
+from datetime import datetime
+from dotenv import load_dotenv
 
-TABLE_NAME = "hook_logs"
-try:
+load_dotenv()
+
+BASE_PATH = os.getenv("BASE_PATH", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+DB_PATH = os.getenv("DB_PATH", os.path.join(BASE_PATH, "db", "hook_status.db"))
+
+def init_db(db_path: str = DB_PATH) -> None:
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS hook_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            status TEXT NOT NULL,
+            timestamp TEXT NOT NULL,
+            reason TEXT
+        );
+    """)
+    conn.commit()
+    conn.close()
+
+def log_status(status: str, reason: str = None, db_path: str = DB_PATH) -> None:
+    if not os.path.exists(db_path):
+        init_db(db_path)
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO hook_logs (status, timestamp, reason)
+        VALUES (?, ?, ?);
+    """, (status, datetime.utcnow().isoformat(), reason))
+    conn.commit()
+    conn.close()
