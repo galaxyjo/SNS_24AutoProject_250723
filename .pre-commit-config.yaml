@@ -14,3 +14,19 @@
     rev: d93590f5be797aabb60e3b09f2f52dddb02f349f  # frozen: 7.3.0
     hooks:
       - id: flake8
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        args: [--ignore-missing-imports]
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.8
+    hooks:
+      - id: bandit
+        args: ["-c", "pyproject.toml"]
