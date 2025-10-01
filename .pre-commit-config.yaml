@@ -1,32 +1,16 @@
-repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+﻿repos:
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: daa8297d8c2c2c2c38b7e32a0912debc8969a0dc  # frozen: v3.0.0a5
     hooks:
-      - id: fix-byte-order-marker
-        stages: [manual]
-      - id: trailing-whitespace
-        stages: [manual]
-      - id: end-of-file-fixer
-        stages: [manual]
+      - id: pylint
 
   - repo: https://github.com/psf/black
-    rev: 24.3.0
+    rev: af0ba72a73598c76189d6dd1b21d8532255d5942  # frozen: 25.9.0
     hooks:
       - id: black
         language_version: python3.10
-        stages: [manual]
 
-  - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.7.4  # ✅ 존재하는 안정 버전
+  - repo: https://github.com/pycqa/flake8
+    rev: d93590f5be797aabb60e3b09f2f52dddb02f349f  # frozen: 7.3.0
     hooks:
-      - id: pylint
-        args: [--disable=R,C]
-        language_version: python3.10
-        stages: [manual]
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.9.0
-    hooks:
-      - id: mypy
-        language_version: python3.10
-        stages: [manual]
+      - id: flake8
