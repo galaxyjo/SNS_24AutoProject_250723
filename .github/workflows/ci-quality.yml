@@ -1,3 +1,4 @@
+---
 name: CI Quality Check
 
 on:
@@ -31,4 +32,8 @@ jobs:
 
       - name: Run .md consistency test
         run: |
-          pytest tests/test_ci_tools/test_generate_manuals.py --tb=short
+          pytest tests/test_ci_tools/test_generate_manuals.py \
+            --tb=short \
+            --cov=modules \
+            --cov=tools \
+            --cov-report=term-missing
