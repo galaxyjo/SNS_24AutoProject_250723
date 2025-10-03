@@ -44,11 +44,10 @@ jobs:
       - name: Run bandit
         run: bandit -r modules
 
-      # 🔹 .md consistency test는 커버리지 옵션 제거
+      # 🔹 .md consistency test는 커버리지 없이 별도 실행
       - name: Run .md consistency test
         run: pytest tests/test_ci_tools/test_generate_manuals.py --tb=short
 
-      # 🔹 전체 커버리지 검사는 별도로 실행
-      - name: Run coverage (CI)
-        run: |
-          pytest --cov=modules --cov=tools --cov-report=term-missing
+      # ✅ 전체 테스트 (커버리지 X)
+      - name: Run main tests (no coverage)
+        run: pytest --tb=short
