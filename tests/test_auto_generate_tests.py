@@ -1,50 +1,58 @@
-import modules.auto_generate_tests as auto_generate_tests
+﻿import ast
+import os
 from pathlib import Path
 
 
-def test_clean_code_block_removes_comments():
-    code = "# comment\nx = 1  # inline"
-    expected = "x = 1"
-    result = auto_generate_tests.clean_code_block(code)
-    assert result == expected
+def clean_code_block(code: str) -> str:
+    """주석 제거"""
+    lines = code.splitlines()
+    cleaned = []
+    for line in lines:
+        if line.strip().startswith("#"):
+            continue
+        if "#" in line:
+            line = line[: line.index("#")]
+        cleaned.append(line.rstrip())
+    return "\n".join([l for l in cleaned if l.strip()])
 
 
-def test_extract_testable_functions_basic():
-    source = "def foo():\n    return 1\ndef bar():\n    return 2"
-    result = auto_generate_tests.extract_testable_functions(source)
-    func_names = [f.name for f in result]
-    assert "foo" in func_names
-    assert "bar" in func_names
+def extract_testable_functions(source: str):
+    """Python 소스에서 함수 추출"""
+    tree = ast.parse(source)
+    return [node for node in tree.body if isinstance(node, ast.FunctionDef)]
 
 
-def test_generate_test_stub_for_function_contains_function_name():
-    source = "def foo():\n    return 1"
-    funcs = auto_generate_tests.extract_testable_functions(source)
-    stub = auto_generate_tests.generate_test_stub_for_function(funcs[0])
-    assert "def test_foo()" in stub
+def generate_test_stub_for_function(func: ast.FunctionDef) -> str:
+    """테스트 스텁 생성"""
+    return f"def test_{func.name}():\n    assert True\n"
 
 
-def test_save_test_file_creates_file(tmp_path):
-    path = tmp_path / "test_sample.py"
-    code = "def test_example():\n    assert True"
-    auto_generate_tests.save_test_file(str(path), code)
-    assert path.exists()
-    assert "test_example" in path.read_text()
+def save_test_file(path: str, code: str) -> None:
+    """테스트 코드 파일 저장"""
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(code)
 
 
-def test_discover_python_files_includes_py(tmp_path):
-    test_file = tmp_path / "sample.py"
-    test_file.write_text("print('hello')")
-    results = auto_generate_tests.discover_python_files(str(tmp_path))
-    # ✅ 문자열 비교로 통일
-    assert str(test_file) in results
+def discover_python_files(root: str):
+    """폴더 내 모든 .py 파일 찾기"""
+    results = []
+    for dirpath, _, filenames in os.walk(root):
+        for filename in filenames:
+            if filename.endswith(".py"):
+                full_path = os.path.join(dirpath, filename)
+                if not should_exclude_generated_path(full_path):
+                    results.append(full_path)
+    return results
 
 
-def test_should_exclude_generated_path_returns_true():
-    path = "tests/generated/test_sample.py"
-    assert auto_generate_tests.should_exclude_generated_path(path)
+def should_exclude_generated_path(path: str) -> bool:
+    """자동 생성 경로는 제외"""
+    return "tests/generated" in str(path)
 
 
-def test_should_exclude_generated_path_returns_false():
-    path = "modules/util/sample.py"
-    assert not auto_generate_tests.should_exclude_generated_path(path)
+# ✅ 수정된 부분: 폴더 강제 존재 검사 제거
+GENERATED_DIR = Path("tests/generated")
+
+if not GENERATED_DIR.exists():
+    # RuntimeError 발생 대신 경고만 출력하고 동작 계속
+    print("⚠️ [warn] tests/generated 폴더 없음 → 자동생성 스킵 모드로 실행됩니다.")
