@@ -1,59 +1,52 @@
----
-name: CI Quality Check
+name: Quality check
 
-"on":
-  workflow_dispatch:
+on:
   push:
-    paths:
-      - 'scripts/ci_tools/**'
-      - 'tests/test_ci_tools/**'
-      - 'docs/**'
+    branches:
+      - main
+      - develop
+      - "rebuild-*"
   pull_request:
-    paths:
-      - 'scripts/ci_tools/**'
-      - 'tests/test_ci_tools/**'
-      - 'docs/**'
+    branches:
+      - main
+      - develop
 
 jobs:
-  quality-check:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      # ✅ pytest & pytest-cov를 먼저 설치 → 항상 로딩 보장
-      - name: Install pytest & pytest-cov
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pytest-cov
-          pytest --version
-          pip show pytest-cov
-
-      - name: Install CI dependencies
-        run: |
-          pip install -r requirements-ci.txt
-
-      - name: Verify pytest-cov is available
-        run: |
-          python - <<'PY'
-          import pkgutil, sys
-          ok = pkgutil.find_loader("pytest_cov") is not None
-          print("pytest-cov found? ", ok)
-          if not ok: sys.exit(1)
-          PY
-
-      - name: Run test for manuals with coverage
-        run: |
-          pytest tests/test_ci_tools/test_generate_manuals.py \
-            --tb=short \
-            --cov=scripts \
-            --cov-report=term-missing
-
-      - name: Install project test dependencies
-        run: |
           pip install -r requirements.txt
+          pip install pytest pytest-cov pylint mypy flake8 black bandit
+
+      - name: Run black
+        run: black --check .
+
+      - name: Run flake8
+        run: flake8 .
+
+      - name: Run pylint
+        run: pylint modules tools
+
+      - name: Run mypy
+        run: mypy modules tools
+
+      - name: Run bandit
+        run: bandit -r modules
+
+      - name: Run .md consistency test
+        run: pytest tests/test_ci_tools/test_generate_manuals.py --tb=short
+
+      - name: Run coverage (CI)
+        run: |
+          pytest --cov=modules --cov=tools --cov-report=term-missing
